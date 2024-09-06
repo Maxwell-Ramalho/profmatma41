@@ -5,7 +5,8 @@ date: "06/09/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
+    \includegraphics[width=2inusethis::use_git()
+,height=2in]{ufsj.png}\LARGE\\}
   - \posttitle{\end{center}}
 toc-title: "Sumário"
 output:
