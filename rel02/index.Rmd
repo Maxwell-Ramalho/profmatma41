@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02 - Como usar o projeto Relatórios"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 02 - Estatística Descritiva"
+author: "Maxwell Ramalho"
+date: "13/09/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -29,9 +29,67 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever como realizar os relatórios.
+Descrever como a Estatística Descritiva, que tem como principal objetivo organizar, resumir e apresentar dados de forma compreensível. Ela não busca fazer inferências ou generalizações sobre uma população, mas sim descrever as características e padrões dos dados coletados de maneira clara e acessível. O uso de técnicas de Estatística Descritiva permite que os analistas e pesquisadores obtenham uma visão geral das informações, facilitando a interpretação e a comunicação dos resultados.
 
-# Apresentação do relatório
+# Definição
 
-Aqui será o local para apresentar o material sobre o relatório.
+Estatística Descritiva é um ramo da estatística que se concentra na descrição e resumo das características de um conjunto de dados. Ao contrário da Estatística Inferencial, que usa amostras para fazer generalizações sobre uma população, a Estatística Descritiva se limita a trabalhar com os dados disponíveis, utilizando diversas ferramentas para sintetizar e representar as informações de forma eficaz. As ferramentas e métodos empregados em Estatística Descritiva incluem medidas de tendência central, medidas de dispersão, e representações gráficas.
 
+# Definição de Amostra
+
+Uma amostra é um subconjunto selecionado da população que é usado para representar a população como um todo. A amostra deve ser cuidadosamente escolhida para refletir com precisão as características da população. O objetivo de trabalhar com uma amostra é facilitar a coleta e a análise de dados, especialmente quando é impraticável ou impossível estudar toda a população.
+
+EXEMPLOS:
+
+1. Uma pesquisa realizada com 100 alunos de uma escola para inferir as opiniões de todos os alunos da escola.
+
+2. A seleção de 50 peças de uma linha de produção para verificar a qualidade das peças fabricadas.
+
+# Definição de Variável
+
+Uma variável é qualquer característica, atributo ou medida que pode assumir diferentes valores em diferentes elementos da população ou amostra. As variáveis são essenciais para a análise estatística porque representam os dados que estão sendo estudados.
+
+## Definição de Variável Qualitativa
+
+1. Nominais: Representam categorias sem uma ordem específica. Exemplo: cor dos olhos (azul, verde, castanho).
+
+2. Ordinais: Representam categorias com uma ordem específica. Exemplo: nível de satisfação (ruim, regular, bom, excelente).
+
+## Definição de Variável Quantitativa
+
+1. Discretas: São variáveis que podem assumir valores contáveis, frequentemente inteiros. Exemplo: número de filhos, número de carros.
+
+2. Contínuas: São variáveis que podem assumir qualquer valor dentro de um intervalo, frequentemente medidas. Exemplo: altura, peso, temperatura.
+
+
+## Definição de População
+
+A população refere-se ao conjunto completo de todos os elementos ou indivíduos que possuem uma característica específica e sobre os quais se deseja fazer uma análise ou inferência. Pode ser finita ou infinita, dependendo do contexto do estudo.
+
+
+# Definição Medidas de Tendência Central
+
+1. Média: A média aritmética é a soma de todos os valores dividida pelo número total de valores. É uma medida que indica o valor típico ou central de um conjunto de dados.
+
+2. Mediana: A mediana é o valor central que divide o conjunto de dados em duas partes iguais quando os dados são ordenados. Ela é útil para descrever a posição central em distribuições não simétricas.
+
+3. Moda: A moda é o valor ou valores que ocorrem com maior frequência em um conjunto de dados. Pode haver mais de uma moda (bimodal ou multimodal) ou nenhuma se todos os valores ocorrem com a mesma frequência.
+
+
+# Definição Medidas de Dispersão
+
+1. Desvio Padrão: Mede a dispersão dos dados em relação à média. Um desvio padrão alto indica que os dados estão mais espalhados, enquanto um desvio padrão baixo indica que os dados estão mais próximos da média.
+
+2. Variância: É o quadrado do desvio padrão e também indica a dispersão dos dados. Ajuda a entender a variabilidade dentro do conjunto de dados.
+
+3. Amplitude: A diferença entre o valor máximo e o valor mínimo no conjunto de dados. Fornece uma medida simples da dispersão total.
+
+4. Intervalo Interquartílico (IQR): Mede a dispersão dos dados entre o primeiro quartil (25º percentil) e o terceiro quartil (75º percentil), indicando a extensão central dos dados sem ser influenciado por valores extremos.
+
+
+# Coleta, organização e apresentação dos dados
+  A coleta de dados é o processo de reunir informações ou dados brutos a partir de diversas fontes para análise posterior. Essa etapa é crucial, pois a qualidade da análise estatística depende diretamente da qualidade dos dados coletados.
+
+  A organização dos dados refere-se ao processo de estruturar e classificar os dados brutos de maneira sistemática para facilitar a análise e interpretação. Isso envolve a criação de tabelas, agrupamento de dados em categorias, e a preparação para análises estatísticas.
+
+  A apresentação dos dados é o processo de exibir os dados organizados de maneira clara e compreensível, geralmente utilizando gráficos, tabelas e diagramas. O objetivo é comunicar os resultados de forma eficaz para facilitar a interpretação e a tomada de decisões.

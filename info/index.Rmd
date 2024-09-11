@@ -1,13 +1,13 @@
 ---
 title: "Maxwell Ramalho"
-image: "logo.png"
+image: "foto.jpeg"
 links:
   - label: GitHub
-    url: "https://github.com/"
+    url: "https://github.com/Maxwell-Ramalho"
   - label: Email
-    url: "mailto:name@gmail.com"
+    url: "mailto:maxwellsouza100@gmail.com"
 output:
   postcards::jolla
 ---
  
-Descrição sobre o aluno(a)!
+Aluno do curso de Mestrado na UFSJ!

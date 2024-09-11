@@ -1,12 +1,11 @@
 ---
-title: "Relatório 01 - Introdução ao R"
+title: "Relatório 01 - Markdown e Latex"
 author: "Maxwell Ramalho"
 date: "06/09/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
-    \includegraphics[width=2inusethis::use_git()
-,height=2in]{ufsj.png}\LARGE\\}
+    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
   - \posttitle{\end{center}}
 toc-title: "Sumário"
 output:
@@ -31,24 +30,137 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever as ideias básicas sobre o ambiente R:
+Descrever sobre Markdown e Latex.
 
-- Como instalar o R e RStudio;
-- Diferenças entre o R e a IDE RStudio;
-- Como o R trabalha;
-- Comandos elementares;
-- Objetos;
-- Manipulação com objetos;
-- Importação de dados;
-- Pacotes:
-  - Instalação;
-  - Como usar.
 
 # Apresentação do relatório
 
-Diante do objetivo do relatório, apresentaremos nas próximas subseções, os pontos a serem discutidos.
+Markdown é uma linguagem voltada para formatação de textos. Com ela, você não precisa apertar um botão na interface para deixar o texto em itálico ou sublinhado, por exemplo. Em vez disso, é só colocar alguns marcadores enquanto digita, como underlines (_) e asteriscos (*). 
 
-## Como instalar o R e o RStudio
+Desenvolvido em 2004 por John Gruber e Aaron Swartz para simplificar a estruturação de um texto, o Markdown é um sistema de formatação aberto que torna a escrita e a leitura mais simples. Com uma codificação mínima, além de fácil, ele é visualmente mais "limpo" e pode ser convertido facilmente para HTML.
+
+
+Já o LaTeX é um sistema de preparação de documentos que se destaca por sua capacidade de produção de documentos tipográficos de alta qualidade, especialmente aqueles que contêm fórmulas matemáticas complexas. Desenvolvido por Leslie Lamport na década de 1980, LaTeX é baseado em TeX, uma linguagem de formatação criada por Donald Knuth no final dos anos 1970. 
+
+# Vantagens de usar Markdown
+## Simplicidade e legibilidade 
+Markdown usa uma sintaxe simples usando caracteres de texto simples. Essa simplicidade facilita o aprendizado e o uso, permitindo que você se concentre no conteúdo em si, em vez de em códigos de formatação complexos.
+
+
+## Independência de plataforma
+
+Markdown é independente de plataforma. Você pode criar documentos Markdown em qualquer dispositivo usando um editor de texto ou editor de código, e esses documentos podem ser facilmente visualizados e convertidos em vários formatos em diferentes plataformas. Essa consistência garante a acessibilidade e longevidade do seu conteúdo.
+
+
+## Curva de aprendizado rápido
+Markdown tem uma das sintaxes mais fáceis. Isso significa que você pode aprender em um curto espaço de tempo. A sintaxe é intuitiva, semelhante à formatação que você já usa em e-mails ou mensagens de texto.
+
+## Ampla adoção
+Markdown ganhou imensa popularidade e é compatível com uma infinidade de plataformas, incluindo sistemas de blogs como WordPress, ferramentas de colaboração como GitHub e sistemas de gerenciamento de conteúdo. Isso torna o Markdown uma habilidade valiosa que pode ser aplicada em muitos contextos.
+
+
+## Velocidade e eficiência
+Criar conteúdo no Markdown é rápido e eficiente. Com alguns caracteres simples e outros elementos de formatação. Isso, em troca, permite que seus usuários criem documentos com simplicidade, eficiência e rapidez.
+
+
+## Controle de versão
+Ao usar o Markdown em colaboração com sistemas de controle de versão como o Git, as alterações feitas nos arquivos Markdown são fáceis de rastrear. Isso torna mais simples colaborar em projetos, revisar alterações e manter um registro claro das edições.
+
+# Como inserir listas no Markdown?
+O Markdown oferece suporte a listas ordenadas (numeradas) e não ordenadas (com marcadores). Para criar uma lista ordenada, comece cada item com um número seguido de um ponto final.Para criar uma lista não ordenada, use um asterisco * , mais + ou hifens - .
+
+EXEMPLO:  Ordered List: 1. First item 2. Second item 3. Third item Unordered List: * Item 1 * Item 2 * Item 3
+
+# Como inserir títulos no Markdown?
+
+Para criar um título, use um ou mais símbolos “#” seguidos do texto do título. Por exemplo:
+
+    # Título Principal 
+    ## Título Secundário
+    
+# Como inserir links no Markdown?
+
+Para adicionar um link, coloque o texto do link entre colchetes e a URL entre parênteses. Por exemplo:
+
+    [Visite o GitHub] ( https : //github.com)
+
+# Como inserir imagens no Markdown?
+
+Para adicionar uma imagem, use uma sintaxe semelhante à de links, mas com um ponto de exclamação antes. Por exemplo:
+
+    ! [Descrição da Imagem] (url_da_imagem.jpg)
+
+# Vantagens de usar Latex
+
+## Qualidade Tipográfica Superior
+LaTeX é conhecido por sua capacidade de produzir documentos com excelente qualidade tipográfica. Isso é especialmente importante para documentos acadêmicos e científicos onde a apresentação visual do texto e das fórmulas matemáticas é crítica.
+
+## Excelente Suporte para Matemática e Fórmulas
+LaTeX é amplamente utilizado para escrever e formatar fórmulas matemáticas complexas. Sua sintaxe robusta permite a inclusão de equações matemáticas com alta clareza e precisão. O suporte a fórmulas matemáticas vai desde operações básicas até estruturas matemáticas avançadas, como integrais.
+
+## Controle Avançado de Layout e Estrutura
+LaTeX fornece um controle detalhado sobre a estrutura e o layout dos documentos. Isso inclui a capacidade de definir as seguintes seções, capítulos, e a formatação de listas, tabelas e figuras. A capacidade de personalizar o layout do documento é útil para criar documentos.
+
+## Facilidade na Gestão de Referências e Bibliografias
+LaTeX integra ferramentas poderosas para a gestão de referências e bibliografias, como o pacote biblatex.
+
+## Documentação Estruturada e Reusabilidade
+LaTeX incentiva a documentação estruturada, ou que facilita a criação de documentos complexos, como teses e livros, de maneira organizada. O uso de arquivos separados para capítulo.
+
+## Alta Personalização
+Você pode personalizar a aparência do seu documento LaTeX de muitas maneiras, desde o layout das páginas até o estilo das fontes e o formato das tabelas e figuras. 
+
+## Compatibilidade com Diversas Plataformas
+LaTeX é uma linguagem de marcação baseada em texto, ou que se torna independente de plataformas e sistemas operacionais. Isso significa que documentos LaTeX podem ser criados e compilados em diferentes ambientes, como Windows, macOS e Linux, sem problemas de compatibilidade.
+
+## Produção de Documentos em Diferentes Formatos
+LaTeX pode gerar documentos em vários formatos, incluindo PDF, DVI e PostScript. Isso oferece flexibilidade na escolha do formato de saída mais proteção para diferentes necessidades, como impressão ou distribuição.
+
+## Suporte a Colaboração
+Ferramentas como Overleaf e ShareLaTeX (agora parte do Overleaf) permitem a colaboração online em documentos LaTeX. Isso facilita o trabalho em equipe, permitindo que vários autores contribuam e editem um documento simultaneamente em um ambiente.
+
+## Estabilidade e Confiabilidade
+LaTeX é amplamente utilizado na academia e na indústria há décadas, o que garante a estabilidade e a confiabilidade do sistema. A atualização da linguagem e suas ferramentas associadas garantem que problemas e bugs sejam raros e bem documentados.
+
+## Documentação Abrangente e Comunidade Ativa
+LaTeX possui uma vasta documentação e uma comunidade ativa de usuários e desenvolvedores. Isso significa que é fácil encontrar ajuda, tutoriais e pacotes adicionais para atender às suas necessidades.
+
+## Portabilidade e Integridade dos Dados
+Como o LaTeX usa arquivos de texto simples, os documentos são portáteis e não dependem de software específico para serem lidos ou editados. Isso garante que os dados do documento sejam permanentes.
+
+# Como inserir imagens no Latex?
+
+Para que você possa inserir figuras em LaTeX, é necessário carregar o pacote graphicx. Isso é feito antes do comando  \begin {document} usando-se o comando \usepackage.
+
+# Como inserir tabelas no Latex?
+
+A estrutura básica para criar uma tabela no LaTeX é a seguinte:
+
+        \begin{table}[ht]
+        \centering
+        \begin{tabular}{colunas}
+       \hline
+    Cabeçalho 1 & Cabeçalho 2 & Cabeçalho 3 \\
+    \hline
+    Dados 1 & Dados 2 & Dados 3 \\
+    Dados 4 & Dados 5 & Dados 6 \\
+    \hline
+      \end{tabular}
+      \caption{Legenda da Tabela}
+      \label{tab:label}
+      \end{table}
+      
+# Conclusões
+
+Markdown e LaTeX são duas linguagens de marcação amplamente utilizadas que servem a propósitos distintos, cada uma com suas próprias características e áreas de aplicação.
+
+Markdown é uma linguagem de marcação leve e fácil de usar, projetada para criar documentos de texto simples e legíveis com uma sintaxe mínima. Sua principal vantagem é a simplicidade e a velocidade com que se pode escrever e formatar documentos. Ideal para a criação de textos para a web, README files, e posts em blogs, Markdown permite uma rápida conversão para HTML e outras formas de saída. É amplamente adotado em plataformas de desenvolvimento colaborativo, como GitHub, devido à sua facilidade de uso e integração com sistemas de versionamento.
+
+LaTeX, por outro lado, é uma linguagem de marcação mais poderosa e complexa, projetada para a criação de documentos de alta qualidade, especialmente aqueles que requerem uma formatação precisa e a inclusão de elementos técnicos, como fórmulas matemáticas e referências bibliográficas. LaTeX é amplamente utilizado em publicações acadêmicas e científicas, devido à sua capacidade de lidar com estruturas complexas e sua flexibilidade na formatação de documentos. Embora sua curva de aprendizado seja mais acentuada, suas funcionalidades avançadas e controle detalhado sobre o layout do documento são inigualáveis.
+
+Em resumo, a escolha entre Markdown e LaTeX deve ser guiada pelas necessidades específicas do projeto. Markdown é ideal para tarefas simples e rápidas, enquanto LaTeX é a escolha preferida para documentos que exigem formatação sofisticada e detalhada. Ambos têm seu lugar e importância na criação de documentos, e a escolha entre eles depende das necessidades de formatação e complexidade do trabalho em questão.
+
+
 
 
 
