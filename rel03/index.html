@@ -357,8 +357,13 @@ display: none;
 <li><a href="#fórmula-da-probabilidade" id="toc-fórmula-da-probabilidade"><span class="toc-section-number">3.1</span> Fórmula da Probabilidade</a></li>
 <li><a href="#exemplos" id="toc-exemplos"><span class="toc-section-number">3.2</span> Exemplos:</a></li>
 </ul></li>
-<li><a href="#conclusão" id="toc-conclusão"><span class="toc-section-number">4</span> Conclusão</a></li>
-<li><a href="#referências" id="toc-referências"><span class="toc-section-number">5</span> Referências</a></li>
+<li><a href="#teorema-de-bayes" id="toc-teorema-de-bayes"><span class="toc-section-number">4</span> Teorema de Bayes</a>
+<ul>
+<li><a href="#exemplo-1-teste-de-doença" id="toc-exemplo-1-teste-de-doença"><span class="toc-section-number">4.0.1</span> Exemplo 1: Teste de doença</a></li>
+<li><a href="#exemplo-2-detecção-de-spam" id="toc-exemplo-2-detecção-de-spam"><span class="toc-section-number">4.0.2</span> Exemplo 2: Detecção de Spam</a></li>
+</ul></li>
+<li><a href="#conclusão" id="toc-conclusão"><span class="toc-section-number">5</span> Conclusão</a></li>
+<li><a href="#referências" id="toc-referências"><span class="toc-section-number">6</span> Referências</a></li>
 </ul>
 </div>
 
@@ -373,6 +378,9 @@ display: none;
 <p>5.Operações com conjuntos</p>
 <p>6.Probabilidade</p>
 <p>7.Conclusão</p>
+<ol start="8" style="list-style-type: decimal">
+<li>Teorema de Bayes</li>
+</ol>
 </div>
 <div id="teoria-de-conjuntos" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Teoria de conjuntos</h1>
@@ -572,14 +580,73 @@ P(A) = 0,25 \times 100 = 25\%
 <p>Assim, a probabilidade de extrair uma carta do naipe de paus é de 25%.</p>
 </div>
 </div>
-<div id="conclusão" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Conclusão</h1>
+<div id="teorema-de-bayes" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Teorema de Bayes</h1>
+<p>A probabilidade de Bayes nos ajuda a atualizar nossa crença sobre a ocorrência de um evento com base em novas evidências. A fórmula de Bayes é:</p>
+<p><span class="math display">\[
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\]</span></p>
+<p>Aqui, <span class="math inline">\(P(A|B)\)</span> é a probabilidade de <span class="math inline">\(A\)</span> acontecer dado que <span class="math inline">\(B\)</span> ocorreu. Vamos ver alguns exemplos:</p>
+<div id="exemplo-1-teste-de-doença" class="section level3" number="4.0.1">
+<h3><span class="header-section-number">4.0.1</span> Exemplo 1: Teste de doença</h3>
+<p>Um teste para uma doença tem uma precisão de 99%, ou seja, a probabilidade de que uma pessoa com a doença receba um teste positivo é 99%. Entretanto, apenas 1% da população tem essa doença.</p>
+<ul>
+<li><span class="math inline">\(P(Doença) = 0.01\)</span> (A probabilidade de uma pessoa ter a doença)</li>
+<li><span class="math inline">\(P(Positivo|Doença) = 0.99\)</span> (A precisão do teste)</li>
+<li><span class="math inline">\(P(Positivo|Sem Doença) = 0.05\)</span> (A probabilidade de um falso positivo)</li>
+</ul>
+<p>Agora, imagine que você recebe um teste positivo. Qual a probabilidade de você realmente ter a doença (<span class="math inline">\(P(Doença|Positivo)\)</span>)?</p>
+<p>Usamos a fórmula de Bayes para calcular:</p>
+<p><span class="math display">\[
+P(Doença|Positivo) = \frac{P(Positivo|Doença) \cdot P(Doença)}{P(Positivo)}
+\]</span></p>
+<p>Onde <span class="math inline">\(P(Positivo)\)</span> é a probabilidade total de um teste positivo, o que inclui tanto verdadeiros positivos quanto falsos positivos:</p>
+<p><span class="math display">\[
+P(Positivo) = P(Positivo|Doença) \cdot P(Doença) + P(Positivo|Sem Doença) \cdot P(Sem Doença)
+\]</span></p>
+<p>Substituindo os valores:</p>
+<p><span class="math display">\[
+P(Positivo) = (0.99 \times 0.01) + (0.05 \times 0.99) = 0.0099 + 0.0495 = 0.0594
+\]</span></p>
+<p>Agora podemos calcular <span class="math inline">\(P(Doença|Positivo)\)</span>:</p>
+<p><span class="math display">\[
+P(Doença|Positivo) = \frac{0.99 \times 0.01}{0.0594} = \frac{0.0099}{0.0594} \approx 0.166
+\]</span></p>
+<p>Portanto, mesmo com um teste positivo, a probabilidade de você realmente ter a doença é de apenas 16,6%, por causa da baixa prevalência da doença na população.</p>
+<hr />
+</div>
+<div id="exemplo-2-detecção-de-spam" class="section level3" number="4.0.2">
+<h3><span class="header-section-number">4.0.2</span> Exemplo 2: Detecção de Spam</h3>
+<p>Você tem um filtro de spam que detecta 90% dos e-mails de spam corretamente e 5% dos e-mails normais erroneamente como spam. Além disso, 20% dos e-mails que você recebe são spam.</p>
+<ul>
+<li><span class="math inline">\(P(Spam) = 0.2\)</span> (A probabilidade de um e-mail ser spam)</li>
+<li><span class="math inline">\(P(Spam|Detectado) = ?\)</span> (O que queremos descobrir)</li>
+<li><span class="math inline">\(P(Detectado|Spam) = 0.9\)</span> (A precisão do filtro)</li>
+<li><span class="math inline">\(P(Detectado|Normal) = 0.05\)</span> (Falsos positivos)</li>
+<li><span class="math inline">\(P(Normal) = 1 - P(Spam) = 0.8\)</span> (A probabilidade de um e-mail ser normal)</li>
+</ul>
+<p>Primeiro, calculamos <span class="math inline">\(P(Detectado)\)</span>:</p>
+<p><span class="math display">\[
+P(Detectado) = P(Detectado|Spam) \cdot P(Spam) + P(Detectado|Normal) \cdot P(Normal)
+\]</span></p>
+<p><span class="math display">\[
+P(Detectado) = (0.9 \times 0.2) + (0.05 \times 0.8) = 0.18 + 0.04 = 0.22
+\]</span></p>
+<p>Agora podemos calcular <span class="math inline">\(P(Spam|Detectado)\)</span>:</p>
+<p><span class="math display">\[
+P(Spam|Detectado) = \frac{P(Detectado|Spam) \cdot P(Spam)}{P(Detectado)} = \frac{0.9 \times 0.2}{0.22} = \frac{0.18}{0.22} \approx 0.818
+\]</span></p>
+<p>Portanto, se um e-mail for detectado como spam, há aproximadamente 81,8% de chance de ele realmente ser spam.</p>
+</div>
+</div>
+<div id="conclusão" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Conclusão</h1>
 <p>O conceito de experimento aleatório é fundamental na estatística, pois descreve um processo cujo resultado não pode ser previsto com certeza, sendo influenciado pela aleatoriedade. Os resultados de tais experimentos são organizados em um conjunto, que representa a coleção de possíveis resultados. O espaço amostral é o conjunto de todos os resultados possíveis de um experimento, proporcionando uma base para a análise de eventos.</p>
 <p>Um evento é uma parte do espaço amostral, podendo consistir em um ou mais resultados, e é o foco da análise probabilística. As operações com conjuntos, como união, interseção e diferença, permitem manipular eventos para determinar relações entre eles, enriquecendo a análise estatística.</p>
 <p>Por fim, a probabilidade quantifica a chance de um evento ocorrer, fornecendo uma medida que fundamenta decisões e previsões em diversos campos, desde a ciência até a economia. Juntas, essas definições e conceitos formam a base da teoria das probabilidades e da estatística, possibilitando uma compreensão mais aprofundada dos fenômenos aleatórios que permeiam a realidade.</p>
 </div>
-<div id="referências" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Referências</h1>
+<div id="referências" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Referências</h1>
 <p>ASTH, Rafael. Probabilidade. Toda Matéria, [s.d.]. Disponível em: <a href="https://www.todamateria.com.br/probabilidade/" class="uri">https://www.todamateria.com.br/probabilidade/</a>. Acesso em: 27 de set. 2024</p>
 </div>
 
