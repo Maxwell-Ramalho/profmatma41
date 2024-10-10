@@ -417,7 +417,6 @@ P(Spam|Detectado) = \frac{P(Detectado|Spam) \cdot P(Spam)}{P(Detectado)} = \frac
 Portanto, se um e-mail for detectado como spam, há aproximadamente 81,8% de chance de ele realmente ser spam.
 
 
-
 # Conclusão
 
 
