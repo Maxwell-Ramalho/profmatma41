@@ -45,6 +45,8 @@ Vamos explorar a teoria de conjuntos, seus exemplos e aplicações. No relatóri
 
 7.Conclusão
 
+8. Teorema de Bayes
+
 # Teoria de conjuntos
 
 
@@ -339,6 +341,83 @@ Assim, a probabilidade de extrair uma carta do naipe de paus é de 25%.
 
 
 
+
+# Teorema de Bayes
+
+A probabilidade de Bayes nos ajuda a atualizar nossa crença sobre a ocorrência de um evento com base em novas evidências. A fórmula de Bayes é:
+
+\[
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+\]
+
+Aqui, \( P(A|B) \) é a probabilidade de \( A \) acontecer dado que \( B \) ocorreu. Vamos ver alguns exemplos:
+
+### Exemplo 1: Teste de doença
+Um teste para uma doença tem uma precisão de 99%, ou seja, a probabilidade de que uma pessoa com a doença receba um teste positivo é 99%. Entretanto, apenas 1% da população tem essa doença.
+
+- \( P(Doença) = 0.01 \) (A probabilidade de uma pessoa ter a doença)
+- \( P(Positivo|Doença) = 0.99 \) (A precisão do teste)
+- \( P(Positivo|Sem Doença) = 0.05 \) (A probabilidade de um falso positivo)
+
+Agora, imagine que você recebe um teste positivo. Qual a probabilidade de você realmente ter a doença (\( P(Doença|Positivo) \))?
+
+Usamos a fórmula de Bayes para calcular:
+
+\[
+P(Doença|Positivo) = \frac{P(Positivo|Doença) \cdot P(Doença)}{P(Positivo)}
+\]
+
+Onde \( P(Positivo) \) é a probabilidade total de um teste positivo, o que inclui tanto verdadeiros positivos quanto falsos positivos:
+
+\[
+P(Positivo) = P(Positivo|Doença) \cdot P(Doença) + P(Positivo|Sem Doença) \cdot P(Sem Doença)
+\]
+
+Substituindo os valores:
+
+\[
+P(Positivo) = (0.99 \times 0.01) + (0.05 \times 0.99) = 0.0099 + 0.0495 = 0.0594
+\]
+
+Agora podemos calcular \( P(Doença|Positivo) \):
+
+\[
+P(Doença|Positivo) = \frac{0.99 \times 0.01}{0.0594} = \frac{0.0099}{0.0594} \approx 0.166
+\]
+
+Portanto, mesmo com um teste positivo, a probabilidade de você realmente ter a doença é de apenas 16,6%, por causa da baixa prevalência da doença na população.
+
+---
+
+### Exemplo 2: Detecção de Spam
+Você tem um filtro de spam que detecta 90% dos e-mails de spam corretamente e 5% dos e-mails normais erroneamente como spam. Além disso, 20% dos e-mails que você recebe são spam.
+
+- \( P(Spam) = 0.2 \) (A probabilidade de um e-mail ser spam)
+- \( P(Spam|Detectado) = ? \) (O que queremos descobrir)
+- \( P(Detectado|Spam) = 0.9 \) (A precisão do filtro)
+- \( P(Detectado|Normal) = 0.05 \) (Falsos positivos)
+- \( P(Normal) = 1 - P(Spam) = 0.8 \) (A probabilidade de um e-mail ser normal)
+
+Primeiro, calculamos \( P(Detectado) \):
+
+\[
+P(Detectado) = P(Detectado|Spam) \cdot P(Spam) + P(Detectado|Normal) \cdot P(Normal)
+\]
+
+\[
+P(Detectado) = (0.9 \times 0.2) + (0.05 \times 0.8) = 0.18 + 0.04 = 0.22
+\]
+
+Agora podemos calcular \( P(Spam|Detectado) \):
+
+\[
+P(Spam|Detectado) = \frac{P(Detectado|Spam) \cdot P(Spam)}{P(Detectado)} = \frac{0.9 \times 0.2}{0.22} = \frac{0.18}{0.22} \approx 0.818
+\]
+
+Portanto, se um e-mail for detectado como spam, há aproximadamente 81,8% de chance de ele realmente ser spam.
+
+
+
 # Conclusão
 
 
@@ -347,7 +426,6 @@ O conceito de experimento aleatório é fundamental na estatística, pois descre
 Um evento é uma parte do espaço amostral, podendo consistir em um ou mais resultados, e é o foco da análise probabilística. As operações com conjuntos, como união, interseção e diferença, permitem manipular eventos para determinar relações entre eles, enriquecendo a análise estatística.
 
 Por fim, a probabilidade quantifica a chance de um evento ocorrer, fornecendo uma medida que fundamenta decisões e previsões em diversos campos, desde a ciência até a economia. Juntas, essas definições e conceitos formam a base da teoria das probabilidades e da estatística, possibilitando uma compreensão mais aprofundada dos fenômenos aleatórios que permeiam a realidade.
-
 
 # Referências
 
