@@ -154,7 +154,6 @@ knitr::include_graphics('imagens/deployments02.png')
   
 
 ---
-
 # Relatórios {#relatorio}
 
 Para *linkar* os relatórios basta usar o código (Exemplo Relatório 01):
