@@ -1,0 +1,379 @@
+---
+title: "Relatório 04 -Distribuições e Probabilidade"
+author: "Maxwell Ramalho"
+date: "27/09/2024"
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
+  - \posttitle{\end{center}}
+toc-title: "Sumário"
+output:
+  bookdown::html_document2: 
+    theme: journal
+    highlight: tango
+    toc: yes
+    number_sections: yes
+    includes:
+      in_header: logo.html
+  pdf_document:
+    
+    toc: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+--- 
+
+# Objetivo
+
+Neste relatório, vamos citar os seguintes itens:
+
+1.DISTRIBUIÇÃO GEOMÉTRICA
+
+    •	DISTRIBUIÇÃO BINOMIAL NEGATIVA
+
+    •	DISTRIBUIÇÃO HIPERGEOMÉTRICA
+
+    •	DISTRIBUIÇÃO MULTINOMIAL
+    
+    •	DISTRIBUIÇÃO UNIFORME
+
+
+
+
+2.VARIÁVEIS ALEATÓRIAS CONTÍNUAS
+
+    •	DISTRIBUIÇÃO EXPONENCIAL
+
+    •	DISTRIBUIÇÃO UNIFORME
+
+    •	DISTRIBUIÇÃO GAMA
+
+    •	DISTRIBUIÇÃO QUI-QUADRADO
+
+    •	DISTRIBUIÇÃO F
+
+
+
+# Variável Aleatória Discreta
+
+### Variável Aleatória Discreta com Distribuição Uniforme
+
+
+A distribuição uniforme é um tipo de distribuição de probabilidade onde todos os valores em um determinado intervalo têm a mesma probabilidade de ocorrer. Existem dois tipos principais de distribuições uniformes: **discreta** e **contínua**.
+
+
+#### Lançamento de um dado justo
+Quando você lança um dado de seis faces justas, a probabilidade de qualquer face aparecer é a mesma, ou seja, cada valor tem uma probabilidade igual de \( \frac{1}{6} \).
+
+- **Variável aleatória**: \( X \), que representa o número que aparece ao lançar o dado.
+- **Valores possíveis**: 1, 2, 3, 4, 5, 6.
+- **Distribuição**: Uniforme discreta, porque cada número tem a mesma probabilidade de \( P(X = k) = \frac{1}{6} \), onde \( k \) é um número de 1 a 6.
+
+
+## Variável Aleatória Contínua com Distribuição Uniforme
+
+#### Tempo de espera por um ônibus
+Suponha que você esteja esperando um ônibus que pode chegar a qualquer momento entre 10 e 20 minutos, e você não tem nenhuma informação adicional sobre quando ele virá. Isso significa que o tempo de espera \( X \) segue uma distribuição uniforme contínua entre 10 e 20 minutos.
+
+- **Variável aleatória**: \( X \), que representa o tempo de espera em minutos.
+- **Intervalo de valores possíveis**: \( [10, 20] \).
+- **Função densidade de probabilidade (PDF)**: Como \( X \) é uma variável aleatória com distribuição uniforme contínua no intervalo \( [a, b] \), a função densidade de probabilidade é dada por:
+  
+  \[
+  f(x) = \frac{1}{b - a}, \quad a \leq x \leq b
+  \]
+
+  Neste caso, \( a = 10 \) e \( b = 20 \), então:
+
+  \[
+  f(x) = \frac{1}{20 - 10} = \frac{1}{10}, \quad 10 \leq x \leq 20
+  \]
+
+Isso significa que, para qualquer tempo entre 10 e 20 minutos, a probabilidade é constante, e cada valor dentro desse intervalo tem a mesma chance de ocorrer.
+
+## Variável Aleatória Discreta com Distribuição Uniforme
+
+#### Escolha aleatória de uma carta de um baralho
+Se você escolher aleatoriamente uma carta de um baralho de 52 cartas, a probabilidade de escolher qualquer uma das cartas é a mesma, ou seja, \( \frac{1}{52} \).
+
+- **Variável aleatória**: \( X \), que representa a carta escolhida (por exemplo, pode ser 1 para o Ás de Espadas, 2 para o 2 de Copas, e assim por diante).
+- **Valores possíveis**: \( 1, 2, 3, \ldots, 52 \) (representando todas as 52 cartas no baralho).
+- **Distribuição**: Uniforme discreta, pois a probabilidade de cada carta ser escolhida é a mesma: \( P(X = k) = \frac{1}{52} \), onde \( k \) é um valor de 1 a 52.
+
+## Variável Aleatória Contínua com Distribuição Uniforme
+
+#### Comprimento de um fio cortado aleatoriamente
+Imagine que você tem um fio de comprimento 1 metro e decide cortá-lo em um ponto aleatório ao longo do seu comprimento. O ponto de corte \( X \) pode estar em qualquer posição entre 0 e 1 metro, e cada ponto tem a mesma probabilidade de ser escolhido.
+
+- **Variável aleatória**: \( X \), que representa a posição do ponto de corte em metros.
+- **Intervalo de valores possíveis**: \( [0, 1] \).
+- **Função densidade de probabilidade (PDF)**: A função de densidade para uma variável com distribuição uniforme contínua no intervalo \( [0, 1] \) é dada por:
+
+  \[
+  f(x) = 1, \quad 0 \leq x \leq 1
+  \]
+
+Neste exemplo, qualquer ponto de corte ao longo do fio tem a mesma probabilidade de ocorrer.
+
+
+
+# Distribuição geométrica
+
+A distribuição geométrica é uma distribuição de probabilidade discreta que modela o número de tentativas até que ocorra o primeiro sucesso em uma sequência de experimentos de Bernoulli, onde cada experimento tem apenas dois resultados possíveis: sucesso ou fracasso.
+
+## Distribuição binomial negativa
+
+
+A distribuição binomial negativa é uma generalização da distribuição geométrica. Enquanto a distribuição geométrica modela o número de tentativas até o primeiro sucesso, a distribuição binomial negativa modela o número de tentativas até que ocorram r sucessos, onde \( r \) é um número inteiro fixo.
+
+### Características da Distribuição Binomial Negativa
+
+- **Experimento de Bernoulli**: Em cada tentativa, pode ocorrer sucesso ou fracasso, com probabilidade de sucesso \( p \) e probabilidade de fracasso \( 1 - p \), de forma que os experimentos são independentes.
+  
+- **Número de sucessos**: A distribuição binomial negativa modela o número de tentativas \( X \) até que \( r \) sucessos ocorram.
+
+- **Função de probabilidade**:
+  
+  A função de probabilidade de \( X \), o número de tentativas necessárias para obter \( r \) sucessos, é dada por:
+
+  \[
+  P(X = k) = \binom{k - 1}{r - 1} \cdot p^r \cdot (1 - p)^{k - r}
+  \]
+
+  Onde:
+  - \( k \) é o número total de tentativas.
+  - \( r \) é o número de sucessos desejados.
+  - \( p \) é a probabilidade de sucesso em cada tentativa.
+  - \( \binom{k - 1}{r - 1} \) é o número de combinações.
+
+### Exemplo 1: Atirando até acertar um alvo três vezes
+Imagine que você está atirando em um alvo e a probabilidade de acertar o alvo em cada tiro é \( p = 0.3 \). Você quer saber quantas tentativas (tiros) serão necessárias para acertar o alvo **três vezes**.
+
+Aqui:
+- \( r = 3 \) (você quer 3 sucessos, ou seja, acertar o alvo três vezes).
+- \( p = 0.3 \) (a probabilidade de sucesso em cada tiro).
+- \( X \) representa o número de tiros necessários para obter três acertos.
+
+Se você deseja calcular a probabilidade de acertar o alvo três vezes em exatamente cinco tentativas (\( X = 5 \)):
+
+\[
+P(X = 5) = \binom{5-1}{3-1} \cdot 0.3^3 \cdot (1 - 0.3)^{5-3}
+\]
+
+\[
+P(X = 5) = \binom{4}{2} \cdot 0.3^3 \cdot 0.7^2
+\]
+
+\[
+P(X = 5) = 6 \cdot (0.027) \cdot (0.49) = 6 \cdot 0.01323 \approx 0.0794
+\]
+
+Portanto, a probabilidade de acertar o alvo três vezes em exatamente cinco tiros é de aproximadamente 7,94%.
+
+### Exemplo 2: Jogando uma moeda até obter quatro caras
+Considere um jogo onde você joga uma moeda justa (\( p = 0.5 \)) até obter **quatro caras**. Aqui:
+
+- \( r = 4 \) (você quer 4 sucessos, ou seja, 4 caras).
+- \( p = 0.5 \) (a probabilidade de sucesso, ou seja, de obter cara em cada lançamento).
+- \( X \) representa o número total de lançamentos necessários para obter quatro caras.
+
+Agora, digamos que você quer calcular a probabilidade de obter exatamente quatro caras em sete lançamentos:
+
+\[
+P(X = 7) = \binom{7-1}{4-1} \cdot 0.5^4 \cdot (1 - 0.5)^{7-4}
+\]
+
+\[
+P(X = 7) = \binom{6}{3} \cdot 0.5^4 \cdot 0.5^3
+\]
+
+\[
+P(X = 7) = 20 \cdot 0.5^7 = 20 \cdot \frac{1}{128} \approx 0.15625
+\]
+
+Portanto, a probabilidade de obter quatro caras em exatamente sete lançamentos é de aproximadamente 15,6%.
+
+### Exemplo 3: Chamadas até atender três clientes
+Suponha que você seja um atendente de um call center, e a probabilidade de conseguir atender um cliente em cada chamada seja \( p = 0.4 \). Você quer saber quantas chamadas precisará fazer até conseguir atender **três clientes**.
+
+- \( r = 3 \) (você quer atender 3 clientes).
+- \( p = 0.4 \) (a probabilidade de atender um cliente em uma chamada).
+- \( X \) é o número total de chamadas até conseguir atender três clientes.
+
+Se você quiser saber a probabilidade de atender três clientes em exatamente cinco chamadas:
+
+\[
+P(X = 5) = \binom{5-1}{3-1} \cdot 0.4^3 \cdot (1 - 0.4)^{5-3}
+\]
+
+\[
+P(X = 5) = \binom{4}{2} \cdot 0.4^3 \cdot 0.6^2
+\]
+
+\[
+P(X = 5) = 6 \cdot (0.064) \cdot (0.36) = 6 \cdot 0.02304 = 0.13824
+\]
+
+Portanto, a probabilidade de atender três clientes em cinco chamadas é de aproximadamente 13,8%.
+
+
+
+## Distribuição Hipergeométrica
+
+
+A distribuição hipergeométrica é uma distribuição de probabilidade discreta usada em situações em que estamos interessados em amostras sem reposição de uma população finita. A principal diferença em relação à distribuição binomial é que, na distribuição hipergeométrica, a probabilidade de sucesso muda a cada tentativa porque os elementos não são recolocados na população.
+
+### Características da Distribuição Hipergeométrica
+
+- Uma população finita contém \( N \) itens.
+- Dessa população, \( K \) itens são classificados como sucessos (o que nos interessa).
+- Os outros \( N - K \) itens são fracassos.
+- Uma amostra de \( n \) itens é retirada **sem reposição**.
+- A variável aleatória \( X \) representa o número de sucessos na amostra.
+
+A função de probabilidade da distribuição hipergeométrica é dada por:
+
+\[
+P(X = k) = \frac{\binom{K}{k} \binom{N - K}{n - k}}{\binom{N}{n}}
+\]
+
+Onde:
+- \( N \) é o tamanho da população.
+- \( K \) é o número de sucessos na população.
+- \( n \) é o tamanho da amostra.
+- \( k \) é o número de sucessos que estamos interessados em encontrar na amostra.
+
+### Exemplo 1: Seleção de cartas de um baralho
+
+Imagine que você tem um baralho de 52 cartas, das quais 4 são ases (sucessos) e 48 são outras cartas (fracassos). Você seleciona 5 cartas aleatoriamente, sem reposição, e quer saber a probabilidade de obter exatamente 2 ases.
+
+Aqui:
+- \( N = 52 \) (o número total de cartas).
+- \( K = 4 \) (o número de ases no baralho).
+- \( n = 5 \) (o número de cartas retiradas).
+- \( k = 2 \) (o número de ases que queremos na mão).
+
+Usando a fórmula da distribuição hipergeométrica:
+
+\[
+P(X = 2) = \frac{\binom{4}{2} \binom{48}{3}}{\binom{52}{5}}
+\]
+
+Primeiro, calculamos os coeficientes binomiais:
+- \( \binom{4}{2} = \frac{4!}{2!(4-2)!} = 6 \)
+- \( \binom{48}{3} = \frac{48!}{3!(48-3)!} = 17,296 \)
+- \( \binom{52}{5} = \frac{52!}{5!(52-5)!} = 2,598,960 \)
+
+Agora, substituímos os valores:
+
+\[
+P(X = 2) = \frac{6 \cdot 17,296}{2,598,960} \approx 0.0399
+\]
+
+Portanto, a probabilidade de obter exatamente 2 ases ao retirar 5 cartas do baralho é aproximadamente 3,99%.
+
+---
+
+### Exemplo 2: Inspeção de qualidade
+
+Uma fábrica tem um lote de 20 produtos, dos quais 5 são defeituosos (sucessos). Um inspetor seleciona 6 produtos aleatoriamente e sem reposição. Qual é a probabilidade de que exatamente 2 dos produtos selecionados sejam defeituosos?
+
+Aqui:
+- \( N = 20 \) (o número total de produtos no lote).
+- \( K = 5 \) (o número de produtos defeituosos).
+- \( n = 6 \) (o número de produtos selecionados).
+- \( k = 2 \) (o número de produtos defeituosos que queremos na amostra).
+
+Usando a fórmula da distribuição hipergeométrica:
+
+\[
+P(X = 2) = \frac{\binom{5}{2} \binom{15}{4}}{\binom{20}{6}}
+\]
+
+Calculando os coeficientes binomiais:
+- \( \binom{5}{2} = 10 \)
+- \( \binom{15}{4} = 1365 \)
+- \( \binom{20}{6} = 38,760 \)
+
+Agora, substituímos os valores:
+
+\[
+P(X = 2) = \frac{10 \cdot 1365}{38,760} = \frac{13,650}{38,760} \approx 0.352
+\]
+
+Portanto, a probabilidade de que exatamente 2 produtos defeituosos sejam selecionados entre os 6 produtos inspecionados é de aproximadamente 35,2%.
+
+---
+
+### Exemplo 3: Amostragem de uma urna de bolas
+
+Suponha que você tenha uma urna contendo 30 bolas, das quais 12 são vermelhas (sucessos) e 18 são de outras cores (fracassos). Você retira 8 bolas aleatoriamente e sem reposição. Qual é a probabilidade de obter exatamente 3 bolas vermelhas?
+
+Aqui:
+- \( N = 30 \) (o número total de bolas).
+- \( K = 12 \) (o número de bolas vermelhas).
+- \( n = 8 \) (o número de bolas retiradas).
+- \( k = 3 \) (o número de bolas vermelhas que queremos).
+
+Usando a fórmula da distribuição hipergeométrica:
+
+\[
+P(X = 3) = \frac{\binom{12}{3} \binom{18}{5}}{\binom{30}{8}}
+\]
+
+Calculando os coeficientes binomiais:
+- \( \binom{12}{3} = 220 \)
+- \( \binom{18}{5} = 8568 \)
+- \( \binom{30}{8} = 585,292 \)
+
+Agora, substituímos os valores:
+
+\[
+P(X = 3) = \frac{220 \cdot 8568}{585,292} = \frac{1,884,960}{585,292} \approx 0.3219
+\]
+
+Portanto, a probabilidade de retirar exatamente 3 bolas vermelhas ao retirar 8 bolas da urna é de aproximadamente 32,19%.
+
+---
+
+### Exemplo 4: Seleção de equipe
+
+Suponha que uma empresa tem 40 candidatos, dos quais 25 são homens (sucessos) e 15 são mulheres (fracassos). A empresa deseja formar uma equipe de 10 pessoas. Qual é a probabilidade de que exatamente 7 dos selecionados sejam homens?
+
+Aqui:
+- \( N = 40 \) (o número total de candidatos).
+- \( K = 25 \) (o número de homens).
+- \( n = 10 \) (o número de pessoas selecionadas).
+- \( k = 7 \) (o número de homens que queremos na equipe).
+
+Usando a fórmula da distribuição hipergeométrica:
+
+\[
+P(X = 7) = \frac{\binom{25}{7} \binom{15}{3}}{\binom{40}{10}}
+\]
+
+Calculando os coeficientes binomiais:
+- \( \binom{25}{7} = 480700 \)
+- \( \binom{15}{3} = 455 \)
+- \( \binom{40}{10} = 847,660,528 \)
+
+Agora, substituímos os valores:
+
+\[
+P(X = 7) = \frac{480700 \cdot 455}{847,660,528} \approx 0.000257
+\]
+
+Portanto, a probabilidade de que exatamente 7 homens sejam selecionados na equipe de 10 pessoas é de aproximadamente 0,0257% (um valor bastante baixo).
+
+
+## Distribuição Multinomial
+
+
+
+
+
+
