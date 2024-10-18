@@ -372,8 +372,262 @@ Portanto, a probabilidade de que exatamente 7 homens sejam selecionados na equip
 
 ## Distribuição Multinomial
 
+A distribuição multinomial é uma generalização da distribuição binomial, utilizada para descrever experimentos onde há mais de duas categorias de resultados possíveis. Cada evento tem uma probabilidade associada a uma das \( k \) categorias, e a soma das probabilidades de todas as categorias deve ser 1. 
+
+### Exemplo 1: Lançamento de um dado
+Imagine que você lança um dado de seis faces 10 vezes. Cada face do dado tem a mesma probabilidade de \( \frac{1}{6} \). O número de vezes que cada face aparece em 10 lançamentos segue uma distribuição multinomial, onde:
+- \( k = 6 \) (as seis faces do dado),
+- \( n = 10 \) (número de lançamentos),
+- Probabilidades: \( p_1 = p_2 = p_3 = p_4 = p_5 = p_6 = \frac{1}{6} \).
+
+### Exemplo 2: Pesquisa de opinião com várias respostas
+Em uma pesquisa de opinião, você pergunta a 100 pessoas qual é o seu esporte favorito entre 4 opções: futebol, basquete, vôlei e tênis. Suponha que as probabilidades de uma pessoa escolher cada esporte são:
+- Futebol: 40%,
+- Basquete: 30%,
+- Vôlei: 20%,
+- Tênis: 10%.
+
+O número de pessoas que escolhem cada esporte segue uma distribuição multinomial com \( n = 100 \) e \( p_1 = 0,4 \), \( p_2 = 0,3 \), \( p_3 = 0,2 \), \( p_4 = 0,1 \).
+
+### Exemplo 3: Cores de bolas em uma urna
+Imagine que você tem uma urna com 3 cores de bolas: vermelha, azul e verde, com probabilidades de \( 0,5 \), \( 0,3 \) e \( 0,2 \) respectivamente. Se você retirar 15 bolas da urna, o número de bolas de cada cor que você retira segue uma distribuição multinomial com:
+- \( k = 3 \) (as três cores),
+- \( n = 15 \) (número de retiradas),
+- \( p_1 = 0,5 \), \( p_2 = 0,3 \), \( p_3 = 0,2 \).
+
+
+## Distribuição Uniforme
+
+
+A distribuição uniforme é um tipo de distribuição de probabilidade em que todos os resultados possíveis de um evento têm a mesma probabilidade de ocorrer. Pode ser discreta (com um número finito de resultados) ou contínua (com um intervalo de resultados possíveis).
+
+
+### Exemplo 1: Lançamento de um dado
+Ao lançar um dado justo de seis faces, cada face tem a mesma probabilidade de \( \frac{1}{6} \) de aparecer. Isso representa uma distribuição uniforme discreta, onde os resultados possíveis são os números de 1 a 6, e a probabilidade de cada um é a mesma.
+
+- Espaço amostral: \( \{1, 2, 3, 4, 5, 6\} \),
+- Probabilidade de cada resultado: \( P(X = x) = \frac{1}{6} \) para cada \( x \in \{1, 2, 3, 4, 5, 6\} \).
+
+### Exemplo 2: Sorteio de uma carta de um baralho
+Se você escolher uma carta aleatoriamente de um baralho de 52 cartas, a probabilidade de tirar qualquer uma das 52 cartas é a mesma, ou seja, \( \frac{1}{52} \). Isso é uma distribuição uniforme discreta.
+
+- Espaço amostral: 52 cartas do baralho,
+- Probabilidade de cada carta: \( P(X = x) = \frac{1}{52} \).
 
 
 
+# Variáveis aleatórias contínuas
 
+## Distribuição Exponencial
+
+A distribuição exponencial é utilizada para modelar o tempo entre eventos que ocorrem de forma independente e com uma taxa constante, sendo comum em processos de "tempo de espera".
+
+### Exemplo 1: Tempo até a falha de um equipamento
+Se você está monitorando um equipamento eletrônico que tem uma vida útil de 5 anos, e a probabilidade de falha é constante ao longo do tempo, o **tempo até a falha** pode ser modelado por uma distribuição exponencial. Suponha que a taxa de falha seja \( \lambda = 0,2 \) falhas por ano. O tempo de vida \( T \) do equipamento segue uma distribuição exponencial com parâmetro \( \lambda = 0,2 \).
+
+- Variável aleatória: \( T \) (tempo até a falha),
+- Função de densidade de probabilidade (PDF): \( f(t) = 0,2 e^{-0,2t} \), para \( t \geq 0 \).
+
+### Exemplo 2: Tempo de espera por um táxi
+Se os táxis chegam aleatoriamente a um ponto e você sabe que, em média, um táxi chega a cada 10 minutos, o tempo de espera até o próximo táxi chegar pode ser modelado por uma distribuição exponencial com \( \lambda = \frac{1}{10} \) (ou seja, uma taxa de 0,1 táxis por minuto).
+
+- Variável aleatória: \( T \) (tempo até o próximo táxi chegar),
+- Função de densidade de probabilidade (PDF): \( f(t) = 0,1 e^{-0,1t} \), para \( t \geq 0 \).
+
+### Exemplo 3: Tempo de atendimento em um caixa eletrônico
+Imagine que o tempo de atendimento de um cliente em um caixa eletrônico siga um processo aleatório, com uma taxa média de \( \lambda = 3 \) clientes atendidos por minuto. O **tempo de atendimento** de um cliente segue uma distribuição exponencial com parâmetro \( \lambda = 3 \) (clientes por minuto).
+
+- Variável aleatória: \( T \) (tempo de atendimento de um cliente),
+- Função de densidade de probabilidade (PDF): \( f(t) = 3 e^{-3t} \), para \( t \geq 0 \).
+
+### Exemplo 4: Tempo entre chamadas telefônicas em uma central de atendimento
+Se chamadas telefônicas chegam de forma aleatória em uma central de atendimento, com uma taxa média de 5 chamadas por hora, o **tempo entre uma chamada e outra** pode ser modelado por uma distribuição exponencial com \( \lambda = 5 \) chamadas por hora.
+
+- Variável aleatória: \( T \) (tempo entre chamadas),
+- Função de densidade de probabilidade (PDF): \( f(t) = 5 e^{-5t} \), para \( t \geq 0 \).
+
+### Exemplo 5: Decaimento radioativo
+O tempo que uma partícula radioativa demora para decair pode ser modelado por uma distribuição exponencial, se o decaimento ocorre com uma taxa constante ao longo do tempo. Suponha que a taxa de decaimento de um certo material seja \( \lambda = 0,01 \) decaimentos por segundo. O **tempo até o próximo decaimento** segue uma distribuição exponencial com parâmetro \( \lambda = 0,01 \).
+
+- Variável aleatória: \( T \) (tempo até o decaimento),
+- Função de densidade de probabilidade (PDF): \( f(t) = 0,01 e^{-0,01t} \), para \( t \geq 0 \).
+
+
+## Distribuição Uniforme
+
+
+A distribuição uniforme descreve variáveis aleatórias onde todos os valores em um intervalo \( [a, b] \) têm a mesma probabilidade de ocorrer. 
+
+### Exemplo 1: Horário de chegada de uma pessoa
+Imagine que uma pessoa chega aleatoriamente a um compromisso entre 9h e 10h da manhã. O **horário de chegada** dessa pessoa segue uma distribuição uniforme contínua no intervalo de tempo entre 9h (0 minutos) e 10h (60 minutos).
+
+- Variável aleatória: \( T \) (tempo de chegada, em minutos após as 9h),
+- Intervalo: \( T \sim U(0, 60) \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{1}{60} \), para \( 0 \leq t \leq 60 \).
+
+### Exemplo 2: Temperatura de uma máquina entre limites controlados
+Suponha que a temperatura de uma máquina seja controlada automaticamente para se manter entre 70°C e 90°C, e qualquer valor dentro desse intervalo tem a mesma probabilidade de ocorrer. A **temperatura em um dado momento** segue uma distribuição uniforme contínua.
+
+- Variável aleatória: \( T \) (temperatura em graus Celsius),
+- Intervalo: \( T \sim U(70, 90) \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{1}{20} \), para \( 70 \leq t \leq 90 \).
+
+### Exemplo 3: Escolha aleatória de um ponto em um segmento de reta
+Se você escolhe aleatoriamente um ponto em um segmento de reta que vai de 0 a 5 metros, a **posição do ponto** ao longo do segmento segue uma distribuição uniforme contínua no intervalo \( [0, 5] \).
+
+- Variável aleatória: \( X \) (posição do ponto em metros),
+- Intervalo: \( X \sim U(0, 5) \),
+- Função de densidade de probabilidade (PDF): \( f(x) = \frac{1}{5} \), para \( 0 \leq x \leq 5 \).
+
+### Exemplo 4: Tensão de um capacitor em uma faixa de operação
+Um capacitor pode operar com uma tensão entre 10 e 20 volts, e a tensão pode ser qualquer valor dentro desse intervalo com a mesma probabilidade. A **tensão instantânea** no capacitor pode ser modelada por uma distribuição uniforme contínua.
+
+- Variável aleatória: \( V \) (tensão em volts),
+- Intervalo: \( V \sim U(10, 20) \),
+- Função de densidade de probabilidade (PDF): \( f(v) = \frac{1}{10} \), para \( 10 \leq v \leq 20 \).
+
+### Exemplo 5: Tempo de execução de um algoritmo entre limites conhecidos
+Suponha que um algoritmo sempre executa em um tempo entre 2 e 6 segundos, e o tempo de execução varia uniformemente entre esses limites. O **tempo de execução** do algoritmo segue uma distribuição uniforme contínua.
+
+- Variável aleatória: \( T \) (tempo de execução, em segundos),
+- Intervalo: \( T \sim U(2, 6) \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{1}{4} \), para \( 2 \leq t \leq 6 \).
+
+
+## Distribuição Gama
+
+
+A distribuição Gama é uma distribuição contínua que é frequentemente utilizada para modelar o tempo até a ocorrência de \( k \) eventos em um processo Poisson, onde os eventos ocorrem de forma independente e a uma taxa constante. A distribuição Gama é parametrizada por dois parâmetros: a forma \( k \) (um número positivo) e a taxa \( \theta \) (ou o inverso da taxa, conhecido como escala). Ela generaliza a distribuição exponencial (quando \( k = 1 \)).
+
+
+### Exemplo 1: Tempo até que \( k \) clientes sejam atendidos
+Imagine que um caixa de banco atenda clientes a uma taxa de 2 clientes por minuto, e você quer saber o **tempo até que 5 clientes sejam atendidos**. O tempo de atendimento de cada cliente segue uma distribuição exponencial, e o tempo total até que 5 clientes sejam atendidos segue uma distribuição Gama com \( k = 5 \) e \( \theta = 0,5 \) (porque a taxa é de 2 clientes por minuto, e a escala é o inverso da taxa).
+
+- Variável aleatória: \( T \) (tempo até 5 clientes serem atendidos),
+- Parâmetros: \( k = 5 \), \( \theta = 0,5 \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{t^{k-1}e^{-t/\theta}}{\theta^k \Gamma(k)} \), onde \( \Gamma(k) \) é a função gama.
+
+### Exemplo 2: Tempo de vida útil de uma máquina com várias componentes
+Suponha que a vida útil de uma máquina dependa do funcionamento de 3 componentes independentes. Cada componente tem uma vida útil que segue uma distribuição exponencial com uma taxa de falha de \( \lambda = 0,1 \) falhas por hora. O **tempo total de vida útil da máquina**, antes que as 3 componentes falhem, segue uma distribuição Gama com \( k = 3 \) e \( \theta = 10 \) horas (porque a taxa é \( \lambda = 0,1 \) e a escala \( \theta = 1/\lambda = 10 \)).
+
+- Variável aleatória: \( T \) (tempo de vida útil da máquina),
+- Parâmetros: \( k = 3 \), \( \theta = 10 \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{t^2 e^{-t/10}}{10^3 \Gamma(3)} \).
+
+### Exemplo 3: Tempo até que 4 peças defeituosas sejam encontradas em uma linha de produção
+Em uma linha de produção, peças defeituosas aparecem aleatoriamente a uma taxa de \( 1 \) defeito a cada 20 minutos. O **tempo total até que 4 peças defeituosas sejam encontradas** segue uma distribuição Gama com \( k = 4 \) e \( \theta = 20 \).
+
+- Variável aleatória: \( T \) (tempo até encontrar 4 defeitos),
+- Parâmetros: \( k = 4 \), \( \theta = 20 \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{t^3 e^{-t/20}}{20^4 \Gamma(4)} \).
+
+### Exemplo 4: Tempo de processamento de tarefas em paralelo
+Imagine que um sistema realiza 6 tarefas independentes, cada uma das quais tem um tempo de processamento que segue uma distribuição exponencial com uma média de 3 minutos por tarefa. O **tempo total de processamento de todas as 6 tarefas** segue uma distribuição Gama com \( k = 6 \) e \( \theta = 3 \).
+
+- Variável aleatória: \( T \) (tempo total para completar 6 tarefas),
+- Parâmetros: \( k = 6 \), \( \theta = 3 \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{t^5 e^{-t/3}}{3^6 \Gamma(6)} \).
+
+### Exemplo 5: Tempo até que 2 eventos ocorram em um processo Poisson com taxa variável
+Em um processo Poisson onde eventos ocorrem a uma taxa de 0,5 eventos por minuto, o **tempo até que 2 eventos ocorram** segue uma distribuição Gama com \( k = 2 \) e \( \theta = 2 \) minutos (porque a taxa \( \lambda \) é 0,5 eventos por minuto, e o inverso da taxa é a escala \( \theta = 2 \)).
+
+- Variável aleatória: \( T \) (tempo até 2 eventos ocorrerem),
+- Parâmetros: \( k = 2 \), \( \theta = 2 \),
+- Função de densidade de probabilidade (PDF): \( f(t) = \frac{t e^{-t/2}}{2^2 \Gamma(2)} \).
+
+
+## Distribuição Qui-quadrado
+
+
+A distribuição qui-quadrado (\( \chi^2 \)) é uma distribuição contínua comumente utilizada em inferência estatística, especialmente em testes de hipóteses e análise de variância. Ela surge principalmente como a soma dos quadrados de variáveis aleatórias independentes que seguem uma distribuição normal padrão. A distribuição qui-quadrado tem um único parâmetro, o número de graus de liberdade (\( k \)), que corresponde ao número de variáveis normais independentes somadas.
+
+
+### Exemplo 1: Soma de quadrados de variáveis normais padrão
+Se você tem \( k \) variáveis independentes \( X_1, X_2, ..., X_k \), cada uma delas seguindo uma **distribuição normal padrão** (\( N(0,1) \)), a soma dos quadrados dessas variáveis, \( X_1^2 + X_2^2 + ... + X_k^2 \), segue uma **distribuição qui-quadrado com \( k \) graus de liberdade**.
+
+- Variável aleatória: \( S = X_1^2 + X_2^2 + ... + X_k^2 \),
+- Parâmetro: \( k \) (graus de liberdade),
+- \( S \sim \chi^2_k \).
+
+### Exemplo 2: Teste qui-quadrado de independência
+No **teste qui-quadrado de independência**, utilizado para verificar se duas variáveis categóricas são independentes, a estatística de teste segue uma distribuição qui-quadrado. Se você tem uma tabela de contingência de \( r \) linhas e \( c \) colunas, a estatística de teste \( \chi^2 \) é calculada a partir das diferenças entre as frequências observadas e as frequências esperadas. Essa estatística segue uma **distribuição qui-quadrado com \( (r - 1)(c - 1) \) graus de liberdade**.
+
+- Variável aleatória: Estatística \( \chi^2 \),
+- Parâmetro: \( (r-1)(c-1) \) graus de liberdade,
+- \( \chi^2 \sim \chi^2_{(r-1)(c-1)} \).
+
+### Exemplo 3: Teste qui-quadrado de ajuste de bondade
+O **teste qui-quadrado de ajuste de bondade** é usado para verificar se uma amostra de dados segue uma distribuição teórica específica. A estatística do teste \( \chi^2 \), que compara as frequências observadas com as esperadas, segue uma **distribuição qui-quadrado com \( k - 1 \) graus de liberdade**, onde \( k \) é o número de categorias ou classes no teste.
+
+- Variável aleatória: Estatística \( \chi^2 \),
+- Parâmetro: \( k-1 \) graus de liberdade,
+- \( \chi^2 \sim \chi^2_{k-1} \).
+
+### Exemplo 4: Variância de uma amostra normal
+Se você tem uma amostra de \( n \) observações \( X_1, X_2, ..., X_n \) de uma população normal com média \( \mu \) e variância \( \sigma^2 \), então a **variância amostral** ajustada \( S^2 \), multiplicada por \( \frac{(n-1)}{\sigma^2} \), segue uma **distribuição qui-quadrado com \( n-1 \) graus de liberdade**.
+
+- Variável aleatória: \( \frac{(n-1)S^2}{\sigma^2} \),
+- Parâmetro: \( n-1 \) graus de liberdade,
+- \( \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \).
+
+### Exemplo 5: Soma dos quadrados dos erros em uma regressão linear
+Na análise de **regressão linear**, a soma dos quadrados dos erros (diferenças entre os valores observados e os valores ajustados pelo modelo) segue uma **distribuição qui-quadrado**. Se o modelo envolve \( k \) parâmetros, a soma dos quadrados dos erros segue uma distribuição qui-quadrado com \( n - k \) graus de liberdade, onde \( n \) é o número de observações.
+
+- Variável aleatória: Soma dos quadrados dos erros \( SSE \),
+- Parâmetro: \( n - k \) graus de liberdade,
+- \( SSE \sim \chi^2_{n - k} \).
+
+### Exemplo 6: Tempo entre falhas em um sistema de componentes independentes
+Se um sistema tem \( k \) componentes independentes, e o tempo até a falha de cada componente segue uma distribuição exponencial, o **tempo total até a falha de todos os componentes** segue uma distribuição qui-quadrado com \( 2k \) graus de liberdade. Isso ocorre porque a soma de \( k \) variáveis exponenciais independentes pode ser expressa como uma variável qui-quadrado.
+
+- Variável aleatória: Tempo até a falha total,
+- Parâmetro: \( 2k \) graus de liberdade,
+- \( T \sim \chi^2_{2k} \).
+
+
+A distribuição F (ou distribuição de Fisher-Snedecor) é uma distribuição contínua utilizada principalmente para comparar variâncias de duas populações, sendo comum em testes estatísticos, como a análise de variância (ANOVA) e o teste F. Ela é definida por dois parâmetros: os graus de liberdade \( d_1 \) e \( d_2 \), que estão associados às duas amostras ou variáveis que estão sendo comparadas.
+
+## Distribuição F
+
+### Exemplo 1: Estatística F no Teste F para comparar variâncias
+O teste F é usado para comparar as variâncias de duas populações independentes. Suponha que você tenha duas amostras independentes, cada uma com \( n_1 \) e \( n_2 \) observações. A estatística de teste \( F \) é a razão entre as variâncias amostrais, ou seja, \( F = \frac{S_1^2}{S_2^2} \), onde \( S_1^2 \) e \( S_2^2 \) são as variâncias amostrais. Essa estatística segue uma distribuição F com \( d_1 = n_1 - 1 \) e \( d_2 = n_2 - 1 \) graus de liberdade.
+
+- Variável aleatória: \( F = \frac{S_1^2}{S_2^2} \),
+- Parâmetros: \( d_1 = n_1 - 1 \), \( d_2 = n_2 - 1 \) graus de liberdade,
+- \( F \sim F(d_1, d_2) \).
+
+### Exemplo 2: Estatística F na Análise de Variância (ANOVA)
+Na ANOVA, queremos comparar as médias de mais de duas populações. A estatística \( F \) é usada para comparar a variância entre os grupos (tratamentos) com a variância dentro dos grupos (erro). A estatística F segue uma distribuição F com \( d_1 = k - 1 \) e \( d_2 = N - k \) graus de liberdade, onde \( k \) é o número de grupos e \( N \) é o número total de observações.
+
+- Variável aleatória: \( F = \frac{\text{Variância entre grupos}}{\text{Variância dentro dos grupos}} \),
+- Parâmetros: \( d_1 = k - 1 \), \( d_2 = N - k \),
+- \( F \sim F(k - 1, N - k) \).
+
+### Exemplo 3: Razão de variâncias em regressão linear
+Na regressão linear, para testar a significância global do modelo, a estatística \( F \) é usada para verificar se o conjunto de variáveis independentes tem uma relação significativa com a variável dependente. Essa estatística \( F \) é a razão entre a variância explicada pelo modelo e a variância residual (não explicada). A estatística \( F \) segue uma distribuição F com \( d_1 = k \) e \( d_2 = n - k - 1 \) graus de liberdade, onde \( k \) é o número de preditores e \( n \) é o número de observações.
+
+- Variável aleatória: \( F = \frac{\text{Variância explicada}}{\text{Variância residual}} \),
+- Parâmetros: \( d_1 = k \), \( d_2 = n - k - 1 \),
+- \( F \sim F(k, n - k - 1) \).
+
+### Exemplo 4: Teste F na análise de variância de dois fatores (ANOVA de dois fatores)
+Na ANOVA de dois fatores, temos dois fatores que influenciam a variável de interesse. Para testar se os dois fatores têm um efeito significativo sobre a variável dependente, são calculadas duas estatísticas \( F \), uma para cada fator. Cada uma dessas estatísticas \( F \) segue uma distribuição F com graus de liberdade diferentes para cada fator.
+
+- Variável aleatória: \( F_1 \) e \( F_2 \) (para os dois fatores),
+- Parâmetros: \( d_1 = (r-1) \) e \( d_2 = (s-1) \) para os fatores 1 e 2, \( r \) e \( s \) são os níveis dos fatores,
+- \( F \sim F(d_1, d_2) \).
+
+### Exemplo 5: Comparação entre modelos em regressão (Teste F parcial)
+Em regressão múltipla, se você deseja comparar dois modelos de regressão (um modelo completo e um modelo reduzido), a estatística \( F \) pode ser usada para verificar se o modelo completo explica significativamente mais variabilidade do que o modelo reduzido. A estatística \( F \) é a razão entre a soma dos quadrados da regressão (diferença entre os dois modelos) e a soma dos quadrados residuais (erro), seguindo uma distribuição F com \( d_1 \) e \( d_2 \) graus de liberdade.
+
+- Variável aleatória: \( F \),
+- Parâmetros: \( d_1 = p_2 - p_1 \) e \( d_2 = n - p_2 \), onde \( p_2 \) e \( p_1 \) são os números de parâmetros nos modelos completo e reduzido, respectivamente,
+- \( F \sim F(d_1, d_2) \).
+
+### Exemplo 6: Comparação de modelos em séries temporais
+No contexto de modelagem de séries temporais, especialmente na comparação de modelos autoregressivos, a estatística \( F \) pode ser utilizada para comparar dois modelos com diferentes números de parâmetros. A estatística segue uma distribuição F com graus de liberdade baseados no número de parâmetros nos dois modelos.
+
+- Variável aleatória: \( F \),
+- Parâmetros: \( d_1 = \text{Diferença no número de parâmetros entre os dois modelos} \), \( d_2 = \text{Número de observações menos o número de parâmetros no modelo maior} \),
+- \( F \sim F(d_1, d_2) \).
 
