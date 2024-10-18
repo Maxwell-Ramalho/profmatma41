@@ -170,7 +170,3 @@ Relatórios desenvolvidos:
 - [Relatório 05 (11/10/2024)](rel05/index.html){target="_blank"}
 - [Relatório 06 (18/10/2024)](rel06/index.html){target="_blank"}
 - [Relatório 07 (25/10/2024)](rel07/index.html){target="_blank"}
-
-
-
-- ...
