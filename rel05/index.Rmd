@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 05-Distribuição de Probabilidade"
+author: "Maxwell Ramalho"
+date: "11/10/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -30,9 +30,106 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
 
-# Apresentação do relatório
+Vamos trabalhar com os conceitos principais de probabilidade.
 
-Aqui será o local para apresentar o material sobre o relatório.
+
+
+# Conceitos Fundamentais de Probabilidade
+
+## Probabilidade Condicional
+A probabilidade condicional mede a probabilidade de um evento \( A \) ocorrer dado que outro evento \( B \) já ocorreu. É denotada como \( P(A|B) \). 
+
+**Fórmula**:
+\[
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+\]
+Onde \( P(A \cap B) \) é a probabilidade de que ambos os eventos ocorram.
+
+**Exemplo**: Se a probabilidade de chover em um dia nublado é 0.7, e a probabilidade de ser um dia nublado é 0.5, a probabilidade condicional de chover dado que o dia é nublado seria \( P(Chuva|Nublado) = 0.7 \).
+
+## Inferência Estatística
+A inferência estatística refere-se ao processo de usar dados amostrais para fazer generalizações sobre uma população maior. Isso inclui estimativas de parâmetros, testes de hipóteses e construção de intervalos de confiança.
+
+**Exemplo**: Se você realiza uma pesquisa com 100 pessoas sobre a opinião de uma nova política e descobre que 60% são a favor, você pode inferir que aproximadamente 60% da população total também é a favor, com base na amostra.
+
+## Estimativa
+A estimativa é um valor calculado a partir de dados amostrais que visa aproximar um parâmetro populacional. As estimativas podem ser pontuais ou intervalares.
+
+**Exemplo**: Se a média de altura de uma amostra de 50 estudantes é de 1,70 m, essa é uma estimativa pontual da média de altura de todos os estudantes da escola.
+
+## Teste de Hipóteses
+O teste de hipóteses é um método estatístico que usa dados amostrais para decidir se há evidências suficientes para rejeitar uma hipótese inicial (hipótese nula). 
+
+**Exemplo**: Suponha que um fabricante afirme que sua bateria dura em média 300 ciclos. Um teste de hipóteses pode ser realizado para verificar se a média real é diferente de 300 ciclos.
+
+# Variáveis Aleatórias e Distribuições de Probabilidade
+As variáveis aleatórias são funções que atribuem valores numéricos a resultados de experimentos aleatórios. As distribuições de probabilidade descrevem como os valores de uma variável aleatória são distribuídos.
+
+**Exemplo**: Um dado tem uma variável aleatória discreta que pode assumir os valores 1 a 6, e a distribuição de probabilidade é uniforme, onde cada valor tem uma probabilidade de \( \frac{1}{6} \).
+
+# Distribuição de Probabilidade
+A distribuição de probabilidade fornece uma descrição matemática da probabilidade de cada resultado em um espaço amostral.
+
+**Exemplo**: A distribuição de probabilidade de um dado é uma distribuição discreta, onde cada lado (1 a 6) tem a mesma probabilidade de ser sorteado.
+
+# Distribuição Binomial
+A distribuição binomial modela a probabilidade de um número fixo de sucessos em uma sequência de ensaios de Bernoulli independentes, cada um com a mesma probabilidade de sucesso.
+
+**Fórmula**:
+\[
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+\]
+Onde \( n \) é o número de ensaios, \( k \) é o número de sucessos, e \( p \) é a probabilidade de sucesso.
+
+**Exemplo**: Se lançarmos uma moeda 10 vezes (n=10) e queremos saber a probabilidade de obter exatamente 3 caras (k=3) com uma moeda justa (p=0.5), podemos usar a fórmula acima.
+
+## Distribuição Normal
+A distribuição normal é uma distribuição contínua, simétrica em torno da média, que tem a forma de um sino. Ela é definida por dois parâmetros: média (\( \mu \)) e desvio padrão (\( \sigma \)).
+
+**Exemplo**: A altura de uma população geralmente segue uma distribuição normal, onde a maioria das pessoas tem alturas próximas da média, com menos pessoas em alturas extremas.
+
+### Propriedades da Distribuição Normal
+- **Simetria**: A distribuição é simétrica em torno da média.
+- **Área sob a curva**: A soma das áreas sob a curva é igual a 1.
+- **Desvio padrão**: Aproximadamente 68% dos dados estão dentro de um desvio padrão da média, 95% dentro de dois desvios padrão, e 99,7% dentro de três desvios padrão.
+
+## Intervalos de Confiança
+Um intervalo de confiança é um intervalo de valores, construído a partir de dados amostrais, que provavelmente contém um parâmetro populacional com um certo nível de confiança (geralmente 95%).
+
+**Exemplo**: Se a média de uma amostra é 50 e o intervalo de confiança de 95% é [48, 52], podemos afirmar que temos 95% de certeza de que a média populacional está entre 48 e 52.
+
+## Teste de Hipóteses
+Conforme mencionado, o teste de hipóteses envolve formular uma hipótese nula e uma hipótese alternativa e usar dados amostrais para determinar se devemos rejeitar a hipótese nula.
+
+**Exemplo**: Um pesquisador pode querer testar se a média de notas dos alunos em uma prova é igual a 75. A hipótese nula seria \( H_0: \mu = 75 \), enquanto a hipótese alternativa seria \( H_1: \mu \neq 75 \).
+
+## Erro Tipo I e Tipo II
+- **Erro Tipo I**: Ocorre quando a hipótese nula é rejeitada quando é verdadeira. É denotado por \( \alpha \).
+- **Erro Tipo II**: Ocorre quando não rejeitamos a hipótese nula quando ela é falsa. É denotado por \( \beta \).
+
+**Exemplo**: Se um teste conclui que um medicamento é eficaz quando, na verdade, ele não é, isso é um erro Tipo I. Se o teste conclui que o medicamento não é eficaz quando ele realmente é, isso é um erro Tipo II.
+
+## Regressão Linear
+A regressão linear é um método estatístico usado para modelar a relação entre uma variável dependente e uma ou mais variáveis independentes, ajustando uma linha reta aos dados.
+
+**Fórmula**:
+\[
+y = a + bx
+\]
+Onde \( y \) é a variável dependente, \( a \) é o intercepto, \( b \) é a inclinação e \( x \) é a variável independente.
+
+**Exemplo**: Se você quer prever o preço de casas com base na sua metragem quadrada, pode usar a regressão linear para encontrar a relação entre essas duas variáveis.
+
+# Método dos Mínimos Quadrados
+O método dos mínimos quadrados é uma técnica usada para encontrar a linha de melhor ajuste em uma regressão linear. O método minimiza a soma dos quadrados das diferenças entre os valores observados e os valores previstos pela linha de ajuste.
+
+**Fórmula**:
+\[
+S = \sum (y_i - \hat{y_i})^2
+\]
+Onde \( y_i \) são os valores observados e \( \hat{y_i} \) são os valores previstos.
+
+**Exemplo**: Ao ajustar uma linha aos pontos de dados de preços de casas em função de suas áreas, o método dos mínimos quadrados ajuda a encontrar a linha que minimiza a diferença entre os preços reais e os preços previstos pela linha.
+
 
