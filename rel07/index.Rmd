@@ -1,5 +1,5 @@
 ---
-title: "Relatório 07"
+title: "Relatório 07-Estimadores Pontuais"
 author: "Maxwell Ramalho"
 date: "08/11/2024"
 header-includes:
