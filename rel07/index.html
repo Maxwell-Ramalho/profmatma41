@@ -11,9 +11,9 @@
 
 <meta name="author" content="Maxwell Ramalho" />
 
-<meta name="date" content="2024-08-11" />
+<meta name="date" content="2024-06-12" />
 
-<title>Relatório 07-Estimadores Pontuais</title>
+<title>Relatório 07-Estimação Intervalar</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -238,106 +238,6 @@ ul.task-list{list-style: none;}
 
 
 
-<style type="text/css">
-code {
-white-space: pre;
-}
-.sourceCode {
-overflow: visible;
-}
-</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
-div.sourceCode
-{ background-color: #f8f8f8; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } 
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.at { color: #204a87; } 
-code span.bn { color: #0000cf; } 
-code span.cf { color: #204a87; font-weight: bold; } 
-code span.ch { color: #4e9a06; } 
-code span.cn { color: #8f5902; } 
-code span.co { color: #8f5902; font-style: italic; } 
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.dt { color: #204a87; } 
-code span.dv { color: #0000cf; } 
-code span.er { color: #a40000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #0000cf; } 
-code span.fu { color: #204a87; font-weight: bold; } 
-code span.im { } 
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.kw { color: #204a87; font-weight: bold; } 
-code span.op { color: #ce5c00; font-weight: bold; } 
-code span.ot { color: #8f5902; } 
-code span.pp { color: #8f5902; font-style: italic; } 
-code span.sc { color: #ce5c00; font-weight: bold; } 
-code span.ss { color: #4e9a06; } 
-code span.st { color: #4e9a06; } 
-code span.va { color: #000000; } 
-code span.vs { color: #4e9a06; } 
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    var j = 0;
-    while (j < rules.length) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
-        j++;
-        continue;
-      }
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') {
-        j++;
-        continue;
-      }
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
@@ -438,171 +338,63 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Relatório 07-Estimadores Pontuais</h1>
+<h1 class="title toc-ignore">Relatório 07-Estimação Intervalar</h1>
 <h4 class="author">Maxwell Ramalho</h4>
-<h4 class="date">08/11/2024</h4>
+<h4 class="date">06/12/2024</h4>
 
 </div>
 
 <div id="TOC">
 <h2 id="toc-title">Sumário</h2>
 <ul>
-<li><a href="#objetivo" id="toc-objetivo"><span class="toc-section-number">1</span> Objetivo:</a></li>
-<li><a href="#método-dos-momentos-para-distribuição-normal" id="toc-método-dos-momentos-para-distribuição-normal"><span class="toc-section-number">2</span> Método dos Momentos para
-Distribuição Normal</a></li>
-<li><a href="#método-dos-momentos-para-distribuição-binomial" id="toc-método-dos-momentos-para-distribuição-binomial"><span class="toc-section-number">3</span> Método dos Momentos para
-Distribuição Binomial</a></li>
-<li><a href="#método-da-máxima-verossimilhança" id="toc-método-da-máxima-verossimilhança"><span class="toc-section-number">4</span> Método da Máxima
-Verossimilhança</a></li>
-<li><a href="#estimador-de-mínimos-quadrados" id="toc-estimador-de-mínimos-quadrados"><span class="toc-section-number">5</span> Estimador de Mínimos
-Quadrados</a></li>
-<li><a href="#conclusão" id="toc-conclusão"><span class="toc-section-number">6</span> Conclusão</a></li>
+<li><a href="#objetivo" id="toc-objetivo"><span class="toc-section-number">1</span> Objetivo</a></li>
+<li><a href="#introdução" id="toc-introdução"><span class="toc-section-number">2</span> Introdução</a></li>
 </ul>
 </div>
 
-<div id="objetivo" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Objetivo:</h1>
-<p>No contexto da Teoria da Estimação, este material explora exemplos
-práticos dos métodos de estimadores: Método dos Momentos, Método da
-Máxima Verossimilhança e o Estimador de Mínimos Quadrados.</p>
-</div>
-<div id="método-dos-momentos-para-distribuição-normal" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Método dos Momentos
-para Distribuição Normal</h1>
-<p><strong>Exemplo 1:</strong><br />
-Consideremos uma amostra <span class="math inline">\(X_1, ...,
-X_n\)</span> de variáveis iid <span class="math inline">\(n(\theta,
-\sigma^2)\)</span>. Para essa distribuição, temos <span class="math inline">\(\theta_1 = \theta\)</span> e <span class="math inline">\(\theta_2 = \sigma^2\)</span>. Assim, nossos
-momentos amostrais são dados por <span class="math inline">\(m_1 =
-\bar{X}\)</span> e <span class="math inline">\(m_2 = \frac{1}{n} \sum
-X_i^2\)</span>. Igualando-os aos momentos populacionais, temos <span class="math inline">\(\mu_1 = \theta\)</span> e <span class="math inline">\(\mu_2 = \theta^2 + \sigma^2\)</span>, levando às
-equações <span class="math inline">\(\bar{X} = \theta\)</span> e <span class="math inline">\(\frac{1}{n} \sum X_i^2 = \theta^2 +
-\sigma^2\)</span>.</p>
-<p>Ao resolver para <span class="math inline">\(\theta\)</span> e <span class="math inline">\(\sigma^2\)</span>, obtemos os estimadores do
-Método dos Momentos: <span class="math display">\[
-\hat{\theta} = \bar{X} \quad \text{e} \quad \hat{\sigma}^2 = \frac{1}{n}
-\sum (X_i - \bar{X})^2.
-\]</span></p>
-<p>Este método confirma a intuição inicial e se mostra valioso quando
-nenhum outro estimador é evidente. Abaixo, um código R que simula uma
-amostra com média <span class="math inline">\(\theta = 5\)</span> e
-variância <span class="math inline">\(\sigma^2 = 2\)</span>, calculando
-os estimadores:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Reprodutibilidade</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>sigma_squared <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> theta, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma_squared))</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>theta_hat <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_data)</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>sigma_squared_hat <span class="ot">&lt;-</span> <span class="fu">mean</span>((sample_data <span class="sc">-</span> theta_hat)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimador de theta (θ̂):&quot;</span>, theta_hat, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimador de sigma^2 (σ̂^2):&quot;</span>, sigma_squared_hat, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<p><strong>Resultados esperados:</strong> - <span class="math inline">\(\hat{\theta} \approx 4.96\)</span> - <span class="math inline">\(\hat{\sigma}^2 \approx 1.83\)</span></p>
-</div>
-<div id="método-dos-momentos-para-distribuição-binomial" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Método dos Momentos
-para Distribuição Binomial</h1>
-<p><strong>Exemplo 2:</strong><br />
-Para uma amostra <span class="math inline">\(X_1, ..., X_n\)</span> iid
-de uma distribuição binomial <span class="math inline">\((k,
-p)\)</span>, em que tanto <span class="math inline">\(k\)</span> quanto
-<span class="math inline">\(p\)</span> são desconhecidos, deseja-se
-estimar esses parâmetros. Igualando os momentos amostrais aos momentos
-populacionais, obtemos o sistema: <span class="math display">\[
-\bar{X} = kp \quad \text{e} \quad \frac{1}{n} \sum X_i^2 = kp(1 - p) +
-k^2 p^2.
-\]</span></p>
-<p>Após simplificação, os estimadores são dados por: <span class="math display">\[
-\hat{k} = \frac{\bar{X}^2}{\bar{X} - \frac{1}{n} \sum (X_i -
-\bar{X})^2}, \quad \hat{p} = \frac{\bar{X}}{\hat{k}}.
-\]</span></p>
-<p>Abaixo está o código para simular essa distribuição e aplicar o
-método dos momentos:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Reprodutibilidade</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n, <span class="at">size =</span> k, <span class="at">prob =</span> p)</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>X_bar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_data)</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>S_squared <span class="ot">&lt;-</span> <span class="fu">mean</span>((sample_data <span class="sc">-</span> X_bar)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>k_hat <span class="ot">&lt;-</span> X_bar<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (X_bar <span class="sc">-</span> S_squared)</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>p_hat <span class="ot">&lt;-</span> X_bar <span class="sc">/</span> k_hat</span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimador de k (k̂):&quot;</span>, k_hat, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Estimador de p (p̂):&quot;</span>, p_hat, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<p><strong>Resultado:</strong> <span class="math inline">\(\hat{p}
-\approx 0.305\)</span></p>
-</div>
-<div id="método-da-máxima-verossimilhança" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Método da Máxima
-Verossimilhança</h1>
-<p><strong>Exemplo 3: Estimador de Máxima Verossimilhança para <span class="math inline">\(\mu\)</span> de uma Normal</strong><br />
-Para uma amostra <span class="math inline">\(X_1, X_2, ..., X_n\)</span>
-de uma normal com média <span class="math inline">\(\mu\)</span> e
-variância 1, podemos determinar o estimador de máxima verossimilhança de
-<span class="math inline">\(\mu\)</span> pela função de
-log-verossimilhança: <span class="math display">\[
-l(\mu; x) = \frac{n}{2} \log \left(\frac{1}{2\pi}\right) - \frac{\sum
-(x_i - \mu)^2}{2}.
-\]</span></p>
-<p>Derivando e resolvendo para zero, obtemos: <span class="math display">\[
-\hat{\mu} = \bar{X}.
-\]</span></p>
-<p><strong>Exemplo 4: Estimador de Máxima Verossimilhança para <span class="math inline">\(p\)</span> de uma Bernoulli</strong><br />
-Para uma amostra de uma distribuição Bernoulli, a função de
-verossimilhança para o parâmetro <span class="math inline">\(p\)</span>
-é: <span class="math display">\[
-L(p; x) = \prod p^{x_i} (1 - p)^{1 - x_i}.
-\]</span></p>
-<p>A log-verossimilhança é dada por: <span class="math display">\[
-l(p; x) = \sum x_i \log(p) + (n - \sum x_i) \log(1 - p),
-\]</span> cujas derivadas indicam que <span class="math inline">\(\hat{p} = \bar{X}\)</span>.</p>
-</div>
-<div id="estimador-de-mínimos-quadrados" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Estimador de Mínimos
-Quadrados</h1>
-<p>Para um modelo linear simples <span class="math inline">\(Y = \beta_0
-+ \beta_1 X + \epsilon\)</span>, os estimadores <span class="math inline">\(\hat{\beta_0}\)</span> e <span class="math inline">\(\hat{\beta_1}\)</span> minimizam a soma dos
-quadrados dos erros. Abaixo estão as expressões para os estimadores:
-<span class="math display">\[
-\hat{\beta_1} = \frac{\sum (Y_i X_i) - \frac{1}{n} \sum Y_i \sum
-X_i}{\sum X_i^2 - \frac{1}{n} \left(\sum X_i\right)^2},
-\]</span> <span class="math display">\[
-\hat{\beta_0} = \bar{Y} - \hat{\beta_1} \bar{X}.
-\]</span></p>
 <hr />
+<div id="objetivo" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Objetivo</h1>
+<p>Será apresentado as principais definições, método da quantidade
+pivotal e aplicação do Intervalo de Confiança (IC), à um conjunto de
+dados com a apresentação analítica dos mesmos.</p>
 </div>
-<div id="conclusão" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Conclusão</h1>
-<p>A aplicação dos métodos de estimativa explorados - Método dos
-Momentos, Máxima Verossimilhança e Estimador de Mínimos Quadrados - é
-fundamental para a compreensão e desenvolvimento de estimadores
-eficientes em estatística. Cada método oferece uma abordagem distinta
-para obter estimativas pontuais dos parâmetros de diferentes
-distribuições, destacando-se pela adequação a situações específicas e
-pela versatilidade. O Método dos Momentos, por exemplo, é útil quando
-outros estimadores são menos evidentes, sendo intuitivo e frequentemente
-aplicável em distribuições comuns, como as normais e binomiais. O Método
-da Máxima Verossimilhança, por sua vez, se destaca por ser o preferido
-na maioria dos casos em que se busca um estimador que maximize a
-probabilidade dos dados observados, sendo amplamente utilizado em
-inferências complexas. Já o Estimador de Mínimos Quadrados é
-particularmente valioso em modelos de regressão, pois minimiza o erro
-quadrático e é a base para análises lineares em diversas áreas.</p>
-<p>A compreensão desses métodos e suas implementações práticas por meio
-de códigos simulados permite não apenas a estimação de parâmetros de
-forma precisa, mas também o desenvolvimento de um olhar crítico sobre o
-ajuste e a validade dos modelos em aplicações reais. A combinação dessas
-ferramentas oferece ao estatístico uma caixa de ferramentas poderosa,
-permitindo que ele escolha o método mais adequado conforme as
-características dos dados e os objetivos de cada análise. Dessa forma, a
-utilização desses métodos fortalece a análise estatística, permitindo
-interpretações robustas e fundamentadas, essenciais para a tomada de
-decisões baseada em dados.</p>
+<div id="introdução" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Introdução</h1>
+<p>A estimação intervalar desempenha um papel central na estatística
+inferencial, sendo amplamente utilizada para quantificar a incerteza
+associada à estimativa de parâmetros populacionais. Diferentemente da
+estimação pontual, que fornece um único valor como melhor aproximação de
+um parâmetro, a estimação intervalar apresenta uma faixa de valores que,
+com um nível de confiança especificado, contém o verdadeiro valor do
+parâmetro de interesse. Essa abordagem é especialmente útil em cenários
+onde a variabilidade dos dados ou o tamanho limitado da amostra podem
+impactar a precisão das inferências.</p>
+<p>Dentre os métodos disponíveis para construir intervalos de confiança,
+o método baseado na quantidade pivotal (QP) destaca-se por sua
+flexibilidade e robustez. A QP é uma função específica das observações
+da amostra e do parâmetro desconhecido, que possui uma distribuição
+conhecida, independente do valor do parâmetro. Essa propriedade
+fundamental permite utilizar a QP como base para derivar intervalos de
+confiança de maneira sistemática, mesmo em situações onde métodos
+diretos podem ser inviáveis.</p>
+<p>O uso de QPs é particularmente poderoso, pois evita a necessidade de
+estimar diretamente a variância do parâmetro, reduzindo assim possíveis
+fontes de erro. Além disso, a construção do intervalo de confiança a
+partir de uma QP exige apenas o conhecimento da distribuição da função
+pivotal e do nível de confiança desejado, proporcionando uma abordagem
+intuitiva e amplamente aplicável.</p>
+<p>Neste artigo, exploraremos o método da quantidade pivotal em
+profundidade, desde a definição da QP para um problema específico até
+sua aplicação prática. Abordaremos a derivação da distribuição da QP,
+sua reorganização para a construção do intervalo de confiança e,
+finalmente, demonstraremos o método por meio de um conjunto de dados
+reais, destacando a importância dessa técnica para aplicações
+estatísticas robustas e confiáveis.</p>
+<p>Essa abordagem visa fornecer uma base sólida para compreender e
+aplicar a estimação intervalar de forma rigorosa e eficaz, sendo uma
+ferramenta essencial para análises em diversas áreas do
+conhecimento.</p>
 </div>
 
 

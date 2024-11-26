@@ -1,7 +1,7 @@
 ---
-title: "Relatório 06-Teorema do Limite Central-TLC"
+title: "Relatório 07-Estimadores Pontuais"
 author: "Maxwell Ramalho"
-date: "18/10/2024"
+date: "08/11/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -27,127 +27,116 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 --- 
+---
 
-# Objetivo
+# Objetivo:  
+No contexto da Teoria da Estimação, este material explora exemplos práticos dos métodos de estimadores: Método dos Momentos, Método da Máxima Verossimilhança e o Estimador de Mínimos Quadrados.
 
-Neste relatório iremos falar sobre o Teoremo do Limite Central (TLC), no qual afirma que, dada uma amostra suficientemente grande de variáveis aleatórias independentes e identicamente distribuídas (iid), a soma ou a média dessas variáveis tende a seguir uma distribuição normal, independentemente da distribuição original das variáveis. Isso significa que, mesmo que os dados individuais não sigam uma distribuição normal, a distribuição das médias amostrais de dados tende a ser aproximadamente normal, desde que o tamanho da amostra seja grande o suficiente.
+# Método dos Momentos para Distribuição Normal
 
+**Exemplo 1:**  
+Consideremos uma amostra \(X_1, ..., X_n\) de variáveis iid \(n(\theta, \sigma^2)\). Para essa distribuição, temos \(\theta_1 = \theta\) e \(\theta_2 = \sigma^2\). Assim, nossos momentos amostrais são dados por \(m_1 = \bar{X}\) e \(m_2 = \frac{1}{n} \sum X_i^2\). Igualando-os aos momentos populacionais, temos \(\mu_1 = \theta\) e \(\mu_2 = \theta^2 + \sigma^2\), levando às equações \(\bar{X} = \theta\) e \(\frac{1}{n} \sum X_i^2 = \theta^2 + \sigma^2\).
 
-# Teorema do Limite Central
+Ao resolver para \(\theta\) e \(\sigma^2\), obtemos os estimadores do Método dos Momentos:
+\[
+\hat{\theta} = \bar{X} \quad \text{e} \quad \hat{\sigma}^2 = \frac{1}{n} \sum (X_i - \bar{X})^2.
+\]
 
-Vamos explorar exemplos específicos do Teorema do Limite Central (TLC) com gráficos e explicações de cada cenário. Cada exemplo se refere a diferentes tipos de dados ou situações que ilustram o funcionamento do TLC.
+Este método confirma a intuição inicial e se mostra valioso quando nenhum outro estimador é evidente. Abaixo, um código R que simula uma amostra com média \(\theta = 5\) e variância \(\sigma^2 = 2\), calculando os estimadores:
 
-## Conceitos Preliminares
+```r
+set.seed(123) # Reprodutibilidade
+n <- 100
+theta <- 5
+sigma_squared <- 2
+sample_data <- rnorm(n, mean = theta, sd = sqrt(sigma_squared))
 
-A variável \( Z_n \) é dada por:
+theta_hat <- mean(sample_data)
+sigma_squared_hat <- mean((sample_data - theta_hat)^2)
 
-\[ Z_n = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \overset{n \to \infty}{\longrightarrow} N(0, 1) \]
+cat("Estimador de theta (θ̂):", theta_hat, "\n")
+cat("Estimador de sigma^2 (σ̂^2):", sigma_squared_hat, "\n")
+```
 
-onde \( \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i \), com \( X_i \sim (\mu, \sigma^2) \), sendo independentes e identicamente distribuídos. A esperança de \( \bar{X} \) é igual à média populacional \( \mu \), e sua variância é \( \frac{\sigma^2}{n} \).
+**Resultados esperados:**
+- \(\hat{\theta} \approx 4.96\)
+- \(\hat{\sigma}^2 \approx 1.83\)
 
-Podemos calcular a esperança de \( Z_n \):
+# Método dos Momentos para Distribuição Binomial
 
-\[ E(Z_n) = 0 \]
+**Exemplo 2:**  
+Para uma amostra \(X_1, ..., X_n\) iid de uma distribuição binomial \((k, p)\), em que tanto \(k\) quanto \(p\) são desconhecidos, deseja-se estimar esses parâmetros. Igualando os momentos amostrais aos momentos populacionais, obtemos o sistema:
+\[
+\bar{X} = kp \quad \text{e} \quad \frac{1}{n} \sum X_i^2 = kp(1 - p) + k^2 p^2.
+\]
 
-E a variância de \( Z_n \):
+Após simplificação, os estimadores são dados por:
+\[
+\hat{k} = \frac{\bar{X}^2}{\bar{X} - \frac{1}{n} \sum (X_i - \bar{X})^2}, \quad \hat{p} = \frac{\bar{X}}{\hat{k}}.
+\]
 
-\[ \text{Var}(Z_n) = 1 \]
+Abaixo está o código para simular essa distribuição e aplicar o método dos momentos:
 
-Logo, \( Z_n \) é uma variável distribuída normalmente com média zero e variância 1.
+```r
+set.seed(123) # Reprodutibilidade
+n <- 100
+k <- 10
+p <- 0.3
+sample_data <- rbinom(n, size = k, prob = p)
 
-## Função Característica
+X_bar <- mean(sample_data)
+S_squared <- mean((sample_data - X_bar)^2)
 
-A função característica \( \varphi_X(t) \) de uma variável aleatória \( X \) é:
+k_hat <- X_bar^2 / (X_bar - S_squared)
+p_hat <- X_bar / k_hat
 
-\[ \varphi_X(t) = E[e^{itX}] \]
+cat("Estimador de k (k̂):", k_hat, "\n")
+cat("Estimador de p (p̂):", p_hat, "\n")
+```
 
-Ela é única e sempre existe, sendo relacionada aos momentos de \( X \). A função característica de uma soma de variáveis independentes é o produto das funções características de cada variável. Para variáveis independentes \( X_1, X_2, ..., X_n \), temos:
+**Resultado:** \(\hat{p} \approx 0.305\)
 
-\[ \varphi_{a_1X_1 + a_2X_2 + ... + a_nX_n}(t) = \prod_{i=1}^{n} \varphi_{X_i}(a_i t) \]
+# Método da Máxima Verossimilhança
 
-## Série de Taylor
+**Exemplo 3: Estimador de Máxima Verossimilhança para \(\mu\) de uma Normal**  
+Para uma amostra \(X_1, X_2, ..., X_n\) de uma normal com média \(\mu\) e variância 1, podemos determinar o estimador de máxima verossimilhança de \(\mu\) pela função de log-verossimilhança:
+\[
+l(\mu; x) = \frac{n}{2} \log \left(\frac{1}{2\pi}\right) - \frac{\sum (x_i - \mu)^2}{2}.
+\]
 
-Expansão da função característica usando a série de Taylor:
+Derivando e resolvendo para zero, obtemos:
+\[
+\hat{\mu} = \bar{X}.
+\]
 
-\[ \varphi_Y(t/\sqrt{n}) = 1 - \frac{t^2}{2n} + o(t^2) \]
+**Exemplo 4: Estimador de Máxima Verossimilhança para \(p\) de uma Bernoulli**  
+Para uma amostra de uma distribuição Bernoulli, a função de verossimilhança para o parâmetro \(p\) é:
+\[
+L(p; x) = \prod p^{x_i} (1 - p)^{1 - x_i}.
+\]
 
-Quando \( n \to \infty \), obtemos:
+A log-verossimilhança é dada por:
+\[
+l(p; x) = \sum x_i \log(p) + (n - \sum x_i) \log(1 - p),
+\]
+cujas derivadas indicam que \(\hat{p} = \bar{X}\).
 
-\[ \lim_{n \to \infty} \varphi_{Z_n}(t) = e^{-\frac{t^2}{2}} \]
+# Estimador de Mínimos Quadrados
 
-Essa é a função característica de uma variável normal \( N(0, 1) \).
+Para um modelo linear simples \(Y = \beta_0 + \beta_1 X + \epsilon\), os estimadores \(\hat{\beta_0}\) e \(\hat{\beta_1}\) minimizam a soma dos quadrados dos erros. Abaixo estão as expressões para os estimadores:
+\[
+\hat{\beta_1} = \frac{\sum (Y_i X_i) - \frac{1}{n} \sum Y_i \sum X_i}{\sum X_i^2 - \frac{1}{n} \left(\sum X_i\right)^2},
+\]
+\[
+\hat{\beta_0} = \bar{Y} - \hat{\beta_1} \bar{X}.
+\]
 
-Assim, conforme \( n \to \infinito \), a distribuição da média amostral tende a uma distribuição normal, com a mesma média da população.
-
-
-
-## Exemplo 1: Lançamento de Moedas (Distribuição Binomial)
-
-Imagine que você esteja lançando uma moeda honesta (justa) várias vezes e contando quantas "caras" você obteve. A variável "cara" segue uma distribuição binomial, pois temos dois resultados possíveis (cara ou coroa) e podemos calcular a média dos resultados obtidos em várias amostras.
-
-Situação:
-
-
-- Para cada amostra, você lança a moeda \(n\) vezes e calcula a proporção de "caras".
-- Queremos ver o que acontece com a distribuição das proporções de "caras" conforme o tamanho da amostra aumenta.
-
-
-
-
-Explicação Gráfica:
-1. A distribuição original dos lançamentos de uma moeda tem dois resultados possíveis: 0 (coroa) e 1 (cara).
-2. Ao calcular a média de várias amostras, a distribuição dessas médias se aproxima de uma distribuição normal conforme \(n\) aumenta.
-
-
-![Diferença de conjuntos](graficos.png)
-
-
-Nos gráficos acima, temos a demonstração do Teorema do Limite Central aplicada ao lançamento de uma moeda (distribuição binomial). Abaixo, explico cada gráfico:
-
-
-1. Distribuição Original (Binomial): No primeiro gráfico à esquerda, temos a distribuição binomial de 0 (coroa) e 1 (cara), resultante de lançamentos de uma moeda justa. A probabilidade de sair "cara" é 50%, o que resulta em uma distribuição de dois picos, já que só existem dois resultados possíveis.
-
-
-
-  2.Médias Amostrais:
-  
-  
-   - Conforme pegamos amostras de diferentes tamanhos (\(n = 2, 10, 30, 100\)), e calculamos a média de cada amostra, observamos que a distribuição das médias amostrais começa a se aproximar de uma distribuição normal.
-   - À medida que o tamanho da amostra aumenta, a curva vai ficando mais suavizada e centrada em 0.5, que é a média esperada de "caras" em uma moeda justa.
-
-
-O Teorema do Limite Central (TLC) é um conceito fundamental na estatística que afirma que, à medida que o tamanho da amostra aumenta, a distribuição das médias amostrais de variáveis aleatórias independentes e identicamente distribuídas (iid) se aproxima de uma distribuição normal, independentemente da distribuição original dessas variáveis.
-
-# Mais exemplos do Teorema do Limite Central
-
-## Exemplo 1: Lançamento de Moedas
-Imagine que você esteja lançando uma moeda justa (probabilidade de 50% para cara e 50% para coroa). Esse processo segue uma distribuição binomial, onde os únicos resultados possíveis são "cara" ou "coroa". Se você lançar a moeda várias vezes e calcular a proporção de caras para diferentes tamanhos de amostra, a distribuição dessas proporções se aproximará de uma distribuição normal, conforme o número de lançamentos aumenta.
-
-
-- Com pequenas amostras (n = 2 ou 3): A proporção de "caras" pode variar muito. No entanto, ao calcular médias para mais lançamentos (por exemplo, \(n = 100\)), essa média tende a se estabilizar perto de 0.5 (que é a média esperada para uma moeda justa).
-
-
-- Aplicação: Essa ideia é usada em testes de hipóteses sobre proporções, como em pesquisas de opinião pública.
-
-## Exemplo 2: Comprimento de Peixes em um Lago
-Estudando o comprimento dos peixes em um lago, e essa característica segue uma distribuição assimétrica, com muitos peixes pequenos e poucos peixes grandes. Ao coletar pequenas amostras (por exemplo, 5 peixes por vez), as médias amostrais podem variar consideravelmente. No entanto, à medida que o tamanho das amostras aumenta (por exemplo, 50 ou 100 peixes por vez), as médias dessas amostras se aproximam de uma distribuição normal, mesmo que a distribuição dos comprimentos individuais não seja normal.
-
-- Com poucas medições: poderiamos obter uma média que não reflete a população inteira devido à assimetria. No entanto, com mais medições, as flutuações são suavizadas, e o efeito do TLC permite que você use ferramentas de análise baseadas na normalidade.
-
-## Exemplo 3: Pontuação em uma Prova
-Em uma sala de aula, imagine que os resultados de uma prova sigam uma distribuição multimodal (alguns alunos tiram notas muito baixas, outros muito altas, e o grupo no meio tem notas medianas). Se pegarmos uma pequena amostra de alunos e calcular a média das notas, pode obter uma média que não reflete o grupo inteiro, especialmente se sua amostra incluir apenas alunos de um dos grupos extremos. No entanto, se pegarmos amostras grandes de notas e calcular a média de cada uma, as médias amostrais começam a seguir uma distribuição normal. Isso acontece porque, à medida que tomamos mais alunos na amostra, a variação individual tende a se anular, deixando uma média mais representativa.
-
-- Aplicação: Isso pode ser  utilizado em uma análise de desempenho escolar e na criação de testes padronizados, onde a média das notas deve ser representativa da população total.
-
-## Exemplo 4: Número de Pedidos em um Restaurante
-Suponhamos que o número de pedidos recebidos por um restaurante em uma hora siga uma distribuição de Poisson (usada para modelar contagens de eventos). Esse número pode variar consideravelmente de hora para hora, mas se calcularmos a média de pedidos por hora ao longo de um dia inteiro, ou de várias semanas, essa média vai se aproximar de uma distribuição normal.
-
-- Com poucas horas: O número de pedidos pode ser muito variado, com algumas horas muito ocupadas e outras bem tranquilas. No entanto, podemos calcular a média dos pedidos em várias horas ao longo do tempo, a variação se estabiliza e permite uma aproximação normal.
-
- 
+---
 
 # Conclusão
 
-O Teorema do Limite Central é uma ferramenta poderosa que fundamenta a inferência estatística, permitindo a estimativa de parâmetros de populações inteiras pela análise de amostras suficientemente grandes.
 
+A aplicação dos métodos de estimativa explorados - Método dos Momentos, Máxima Verossimilhança e Estimador de Mínimos Quadrados - é fundamental para a compreensão e desenvolvimento de estimadores eficientes em estatística. Cada método oferece uma abordagem distinta para obter estimativas pontuais dos parâmetros de diferentes distribuições, destacando-se pela adequação a situações específicas e pela versatilidade. O Método dos Momentos, por exemplo, é útil quando outros estimadores são menos evidentes, sendo intuitivo e frequentemente aplicável em distribuições comuns, como as normais e binomiais. O Método da Máxima Verossimilhança, por sua vez, se destaca por ser o preferido na maioria dos casos em que se busca um estimador que maximize a probabilidade dos dados observados, sendo amplamente utilizado em inferências complexas. Já o Estimador de Mínimos Quadrados é particularmente valioso em modelos de regressão, pois minimiza o erro quadrático e é a base para análises lineares em diversas áreas.
+
+A compreensão desses métodos e suas implementações práticas por meio de códigos simulados permite não apenas a estimação de parâmetros de forma precisa, mas também o desenvolvimento de um olhar crítico sobre o ajuste e a validade dos modelos em aplicações reais. A combinação dessas ferramentas oferece ao estatístico uma caixa de ferramentas poderosa, permitindo que ele escolha o método mais adequado conforme as características dos dados e os objetivos de cada análise. Dessa forma, a utilização desses métodos fortalece a análise estatística, permitindo interpretações robustas e fundamentadas, essenciais para a tomada de decisões baseada em dados.
 

@@ -1,7 +1,7 @@
 ---
-title: "Relatório 07-Estimadores Pontuais"
+title: "Relatório 07-Estimação Intervalar"
 author: "Maxwell Ramalho"
-date: "08/11/2024"
+date: "06/12/2024"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -27,116 +27,23 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 --- 
----
 
-# Objetivo:  
-No contexto da Teoria da Estimação, este material explora exemplos práticos dos métodos de estimadores: Método dos Momentos, Método da Máxima Verossimilhança e o Estimador de Mínimos Quadrados.
+# Objetivo
 
-# Método dos Momentos para Distribuição Normal
-
-**Exemplo 1:**  
-Consideremos uma amostra \(X_1, ..., X_n\) de variáveis iid \(n(\theta, \sigma^2)\). Para essa distribuição, temos \(\theta_1 = \theta\) e \(\theta_2 = \sigma^2\). Assim, nossos momentos amostrais são dados por \(m_1 = \bar{X}\) e \(m_2 = \frac{1}{n} \sum X_i^2\). Igualando-os aos momentos populacionais, temos \(\mu_1 = \theta\) e \(\mu_2 = \theta^2 + \sigma^2\), levando às equações \(\bar{X} = \theta\) e \(\frac{1}{n} \sum X_i^2 = \theta^2 + \sigma^2\).
-
-Ao resolver para \(\theta\) e \(\sigma^2\), obtemos os estimadores do Método dos Momentos:
-\[
-\hat{\theta} = \bar{X} \quad \text{e} \quad \hat{\sigma}^2 = \frac{1}{n} \sum (X_i - \bar{X})^2.
-\]
-
-Este método confirma a intuição inicial e se mostra valioso quando nenhum outro estimador é evidente. Abaixo, um código R que simula uma amostra com média \(\theta = 5\) e variância \(\sigma^2 = 2\), calculando os estimadores:
-
-```r
-set.seed(123) # Reprodutibilidade
-n <- 100
-theta <- 5
-sigma_squared <- 2
-sample_data <- rnorm(n, mean = theta, sd = sqrt(sigma_squared))
-
-theta_hat <- mean(sample_data)
-sigma_squared_hat <- mean((sample_data - theta_hat)^2)
-
-cat("Estimador de theta (θ̂):", theta_hat, "\n")
-cat("Estimador de sigma^2 (σ̂^2):", sigma_squared_hat, "\n")
-```
-
-**Resultados esperados:**
-- \(\hat{\theta} \approx 4.96\)
-- \(\hat{\sigma}^2 \approx 1.83\)
-
-# Método dos Momentos para Distribuição Binomial
-
-**Exemplo 2:**  
-Para uma amostra \(X_1, ..., X_n\) iid de uma distribuição binomial \((k, p)\), em que tanto \(k\) quanto \(p\) são desconhecidos, deseja-se estimar esses parâmetros. Igualando os momentos amostrais aos momentos populacionais, obtemos o sistema:
-\[
-\bar{X} = kp \quad \text{e} \quad \frac{1}{n} \sum X_i^2 = kp(1 - p) + k^2 p^2.
-\]
-
-Após simplificação, os estimadores são dados por:
-\[
-\hat{k} = \frac{\bar{X}^2}{\bar{X} - \frac{1}{n} \sum (X_i - \bar{X})^2}, \quad \hat{p} = \frac{\bar{X}}{\hat{k}}.
-\]
-
-Abaixo está o código para simular essa distribuição e aplicar o método dos momentos:
-
-```r
-set.seed(123) # Reprodutibilidade
-n <- 100
-k <- 10
-p <- 0.3
-sample_data <- rbinom(n, size = k, prob = p)
-
-X_bar <- mean(sample_data)
-S_squared <- mean((sample_data - X_bar)^2)
-
-k_hat <- X_bar^2 / (X_bar - S_squared)
-p_hat <- X_bar / k_hat
-
-cat("Estimador de k (k̂):", k_hat, "\n")
-cat("Estimador de p (p̂):", p_hat, "\n")
-```
-
-**Resultado:** \(\hat{p} \approx 0.305\)
-
-# Método da Máxima Verossimilhança
-
-**Exemplo 3: Estimador de Máxima Verossimilhança para \(\mu\) de uma Normal**  
-Para uma amostra \(X_1, X_2, ..., X_n\) de uma normal com média \(\mu\) e variância 1, podemos determinar o estimador de máxima verossimilhança de \(\mu\) pela função de log-verossimilhança:
-\[
-l(\mu; x) = \frac{n}{2} \log \left(\frac{1}{2\pi}\right) - \frac{\sum (x_i - \mu)^2}{2}.
-\]
-
-Derivando e resolvendo para zero, obtemos:
-\[
-\hat{\mu} = \bar{X}.
-\]
-
-**Exemplo 4: Estimador de Máxima Verossimilhança para \(p\) de uma Bernoulli**  
-Para uma amostra de uma distribuição Bernoulli, a função de verossimilhança para o parâmetro \(p\) é:
-\[
-L(p; x) = \prod p^{x_i} (1 - p)^{1 - x_i}.
-\]
-
-A log-verossimilhança é dada por:
-\[
-l(p; x) = \sum x_i \log(p) + (n - \sum x_i) \log(1 - p),
-\]
-cujas derivadas indicam que \(\hat{p} = \bar{X}\).
-
-# Estimador de Mínimos Quadrados
-
-Para um modelo linear simples \(Y = \beta_0 + \beta_1 X + \epsilon\), os estimadores \(\hat{\beta_0}\) e \(\hat{\beta_1}\) minimizam a soma dos quadrados dos erros. Abaixo estão as expressões para os estimadores:
-\[
-\hat{\beta_1} = \frac{\sum (Y_i X_i) - \frac{1}{n} \sum Y_i \sum X_i}{\sum X_i^2 - \frac{1}{n} \left(\sum X_i\right)^2},
-\]
-\[
-\hat{\beta_0} = \bar{Y} - \hat{\beta_1} \bar{X}.
-\]
-
----
-
-# Conclusão
+Será apresentado as principais definições, método da quantidade pivotal e aplicação do Intervalo de Confiança (IC), à um conjunto de dados com a apresentação analítica dos mesmos.
 
 
-A aplicação dos métodos de estimativa explorados - Método dos Momentos, Máxima Verossimilhança e Estimador de Mínimos Quadrados - é fundamental para a compreensão e desenvolvimento de estimadores eficientes em estatística. Cada método oferece uma abordagem distinta para obter estimativas pontuais dos parâmetros de diferentes distribuições, destacando-se pela adequação a situações específicas e pela versatilidade. O Método dos Momentos, por exemplo, é útil quando outros estimadores são menos evidentes, sendo intuitivo e frequentemente aplicável em distribuições comuns, como as normais e binomiais. O Método da Máxima Verossimilhança, por sua vez, se destaca por ser o preferido na maioria dos casos em que se busca um estimador que maximize a probabilidade dos dados observados, sendo amplamente utilizado em inferências complexas. Já o Estimador de Mínimos Quadrados é particularmente valioso em modelos de regressão, pois minimiza o erro quadrático e é a base para análises lineares em diversas áreas.
 
-A compreensão desses métodos e suas implementações práticas por meio de códigos simulados permite não apenas a estimação de parâmetros de forma precisa, mas também o desenvolvimento de um olhar crítico sobre o ajuste e a validade dos modelos em aplicações reais. A combinação dessas ferramentas oferece ao estatístico uma caixa de ferramentas poderosa, permitindo que ele escolha o método mais adequado conforme as características dos dados e os objetivos de cada análise. Dessa forma, a utilização desses métodos fortalece a análise estatística, permitindo interpretações robustas e fundamentadas, essenciais para a tomada de decisões baseada em dados.
+# Introdução 
+
+
+A estimação intervalar desempenha um papel central na estatística inferencial, sendo amplamente utilizada para quantificar a incerteza associada à estimativa de parâmetros populacionais. Diferentemente da estimação pontual, que fornece um único valor como melhor aproximação de um parâmetro, a estimação intervalar apresenta uma faixa de valores que, com um nível de confiança especificado, contém o verdadeiro valor do parâmetro de interesse. Essa abordagem é especialmente útil em cenários onde a variabilidade dos dados ou o tamanho limitado da amostra podem impactar a precisão das inferências.  
+
+Dentre os métodos disponíveis para construir intervalos de confiança, o método baseado na quantidade pivotal (QP) destaca-se por sua flexibilidade e robustez. A QP é uma função específica das observações da amostra e do parâmetro desconhecido, que possui uma distribuição conhecida, independente do valor do parâmetro. Essa propriedade fundamental permite utilizar a QP como base para derivar intervalos de confiança de maneira sistemática, mesmo em situações onde métodos diretos podem ser inviáveis.  
+
+O uso de QPs é particularmente poderoso, pois evita a necessidade de estimar diretamente a variância do parâmetro, reduzindo assim possíveis fontes de erro. Além disso, a construção do intervalo de confiança a partir de uma QP exige apenas o conhecimento da distribuição da função pivotal e do nível de confiança desejado, proporcionando uma abordagem intuitiva e amplamente aplicável.  
+
+Neste artigo, exploraremos o método da quantidade pivotal em profundidade, desde a definição da QP para um problema específico até sua aplicação prática. Abordaremos a derivação da distribuição da QP, sua reorganização para a construção do intervalo de confiança e, finalmente, demonstraremos o método por meio de um conjunto de dados reais, destacando a importância dessa técnica para aplicações estatísticas robustas e confiáveis.  
+
+Essa abordagem visa fornecer uma base sólida para compreender e aplicar a estimação intervalar de forma rigorosa e eficaz, sendo uma ferramenta essencial para análises em diversas áreas do conhecimento.
 
