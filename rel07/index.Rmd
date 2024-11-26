@@ -47,3 +47,150 @@ Neste artigo, exploraremos o método da quantidade pivotal em profundidade, desd
 
 Essa abordagem visa fornecer uma base sólida para compreender e aplicar a estimação intervalar de forma rigorosa e eficaz, sendo uma ferramenta essencial para análises em diversas áreas do conhecimento.
 
+
+
+# Definição de uma Quantidade Pivotal (QP) para o Problema
+
+A quantidade pivotal (QP) é uma ferramenta fundamental na construção de intervalos de confiança. Trata-se de uma função das variáveis amostrais e do parâmetro populacional desconhecido, que possui uma distribuição conhecida e fixa, independentemente do valor do parâmetro em questão. Essa propriedade torna a QP extremamente útil na inferência estatística, pois permite vincular as informações extraídas da amostra com o comportamento probabilístico de um parâmetro populacional.  
+
+Para definir uma QP no contexto de um problema específico, seguimos os seguintes passos principais:  
+
+---
+
+## Passo 1: Identificar o parâmetro de interesse
+
+Primeiramente, é necessário definir qual é o parâmetro populacional que desejamos estimar. Por exemplo:  
+- A média \(\mu\) de uma população;  
+- A variância \(\sigma^2\);  
+- A proporção \(p\) de uma característica em uma população.  
+
+Essa escolha depende diretamente do objetivo do estudo e do contexto em que a inferência será aplicada.  
+
+---
+
+## Passo 2: Selecionar um estimador adequado
+
+Com o parâmetro de interesse definido, o próximo passo é escolher um estimador pontual que seja:  
+1. **Consistente**: Sua estimativa converge para o verdadeiro valor do parâmetro à medida que o tamanho da amostra aumenta.  
+2. **Não viesado**: Em média, o estimador produz o valor correto do parâmetro.  
+3. **Eficiente**: O estimador apresenta variância mínima entre todos os estimadores não viesados.  
+
+Por exemplo, para a média \(\mu\), o estimador \(\bar{X}\), a média amostral, é amplamente utilizado por suas propriedades desejáveis.  
+
+---
+
+## Passo 3: Determinar uma função que combine amostra e parâmetro  
+A quantidade pivotal é construída como uma função das variáveis amostrais \(X_1, X_2, \dots, X_n\) e do parâmetro de interesse. Essa função é desenvolvida de forma que a distribuição resultante seja conhecida. A construção pode variar de acordo com o tipo de dado e a distribuição subjacente da variável.  
+
+Por exemplo:  
+- Quando \(X_i\) segue uma distribuição normal \(N(\mu, \sigma^2)\), uma quantidade pivotal para \(\mu\) é:  
+  \[
+  Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}},
+  \]  
+  onde \(Z\) segue a distribuição \(N(0, 1)\), ou seja, uma normal padrão.  
+
+- Se a variância \(\sigma^2\) é desconhecida, outra QP pode ser definida utilizando a estatística \(t\):  
+  \[
+  T = \frac{\bar{X} - \mu}{S / \sqrt{n}},
+  \]  
+  onde \(S\) é o desvio padrão amostral, e \(T\) segue a distribuição \(t\) de Student com \(n - 1\) graus de liberdade.  
+
+---
+
+## Passo 4: Validar a distribuição da QP  
+Uma vez definida a QP, sua distribuição deve ser conhecida e validada. É essencial garantir que a função pivotal seja independente do parâmetro desconhecido. Esse é o elemento-chave que assegura que a construção do intervalo de confiança seja possível.  
+
+---
+
+### Exemplo: Construção de uma QP para a média de uma população normal
+1. **Parâmetro de interesse:** \(\mu\);  
+2. **Estimador pontual:** \(\bar{X}\), a média amostral;  
+3. **Quantidade pivotal:**  
+   \[
+   T = \frac{\bar{X} - \mu}{S / \sqrt{n}},  
+   \]  
+   onde \(S\) é o desvio padrão da amostra.  
+   
+
+**Distribuição da QP:** \(T \sim t_{n-1}\), uma distribuição \(t\) de Student com \(n-1\) graus de liberdade.  
+
+Essa QP pode ser utilizada diretamente para construir intervalos de confiança para \(\mu\), mesmo quando \(\sigma^2\) é desconhecida.  
+
+---
+
+No contexto geral, a escolha da quantidade pivotal depende diretamente do problema estatístico em análise, da distribuição dos dados, e do tipo de inferência desejada. 
+
+
+# Apresentação da Distribuição da Quantidade Pivotal (QP) 
+
+A definição de uma quantidade pivotal (QP) é apenas o ponto de partida para sua utilização na estimação intervalar. O próximo passo fundamental é compreender a distribuição da QP. Esse entendimento permite determinar os valores críticos associados ao nível de confiança escolhido e, assim, construir o intervalo de confiança para o parâmetro de interesse.  
+
+---
+
+## O que é a Distribuição da QP?
+A distribuição da QP refere-se ao comportamento probabilístico dessa função pivotal. Como mencionado anteriormente, a QP é construída de forma que sua distribuição seja:  
+
+1. **Conhecida:** A distribuição deve ser derivada ou identificada com base no modelo estatístico dos dados.  
+
+2. **Independente do parâmetro desconhecido:** Isso garante que a QP possa ser usada diretamente para fazer inferências sobre o parâmetro.  
+
+Por exemplo:  
+- Se a QP for baseada na média amostral \(\bar{X}\) de uma variável normal \(N(\mu, \sigma^2)\), sua distribuição será normal padrão \(N(0, 1)\) quando o desvio padrão populacional \(\sigma\) é conhecido.  
+- Quando \(\sigma\) é desconhecido, e o desvio padrão amostral \(S\) é utilizado, a QP segue uma distribuição \(t\) de Student com \(n-1\) graus de liberdade.  
+
+---
+
+## Derivando a Distribuição da QP em Exemplos Comuns  
+
+1. **Distribuição da QP para a Média (com \(\sigma\) conhecido):**  
+   Para \(X_i \sim N(\mu, \sigma^2)\), a quantidade pivotal é:  
+   \[
+   Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}.  
+   \]  
+   A QP \(Z\) segue uma distribuição normal padrão \(N(0, 1)\). Essa propriedade decorre da normalidade de \(\bar{X}\) e da escala imposta pelo denominador.  
+
+2. **Distribuição da QP para a Média (com \(\sigma\) desconhecido):**  
+   Quando o desvio padrão populacional \(\sigma\) é desconhecido, usamos o desvio padrão amostral \(S\) para definir:  
+   \[
+   T = \frac{\bar{X} - \mu}{S / \sqrt{n}},  
+   \]  
+   onde \(S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2\).  
+   A estatística \(T\) segue uma distribuição \(t\) de Student com \(n-1\) graus de liberdade, que é mais "larga" do que a normal padrão devido à variabilidade adicional introduzida pela estimativa de \(S\).  
+
+3. **Distribuição da QP para a Variância:**  
+   Suponha que queremos construir um intervalo de confiança para a variância \(\sigma^2\) de uma população normal \(N(\mu, \sigma^2)\). A quantidade pivotal pode ser definida como:  
+   \[
+   \chi^2 = \frac{(n-1)S^2}{\sigma^2},  
+   \]  
+   onde \(S^2\) é a variância amostral.  
+   Essa QP segue uma distribuição qui-quadrado (\(\chi^2\)) com \(n-1\) graus de liberdade.  
+
+---
+
+## Importância da Distribuição da QP
+
+A compreensão da distribuição da QP é essencial por várias razões:  
+
+1. **Cálculo de valores críticos:** Os valores críticos da distribuição, determinados a partir do nível de confiança desejado, são usados para estabelecer os limites inferior e superior do intervalo de confiança.  
+   - Por exemplo, para um nível de confiança de \(95\%\), usamos os quantis \(z_{0.025}\) e \(z_{0.975}\) na distribuição normal padrão.  
+   - Para a distribuição \(t\), usamos os valores críticos \(t_{0.025, n-1}\) e \(t_{0.975, n-1}\).  
+
+2. **Adaptação a diferentes contextos:** A escolha da QP e sua distribuição são ajustadas ao problema específico, permitindo que a abordagem seja flexível e aplicável em uma ampla gama de cenários.  
+
+3. **Garantia de robustez:** A independência do parâmetro desconhecido assegura que as inferências realizadas não sejam enviesadas ou inconsistentes.  
+
+---
+
+## **Exemplo Prático**  
+
+Considere uma amostra de \(n = 10\) observações extraídas de uma população normal. Queremos estimar a média \(\mu\), mas o desvio padrão populacional \(\sigma\) é desconhecido. A quantidade pivotal apropriada é:  
+\[
+T = \frac{\bar{X} - \mu}{S / \sqrt{n}},  
+\]  
+e sabemos que \(T \sim t_{9}\), uma distribuição \(t\) com 9 graus de liberdade.  
+
+Se quisermos construir um intervalo de confiança com \(95\%\) de confiança, os valores críticos \(t_{0.025, 9}\) e \(t_{0.975, 9}\) podem ser encontrados nas tabelas da distribuição \(t\). Esses valores definem a amplitude do intervalo em torno da estimativa \(\bar{X}\).  
+
+---
+
+A distribuição da QP é a peça-chave que conecta o modelo teórico à inferência prática. Entendê-la e utilizá-la corretamente é essencial para construir intervalos de confiança precisos e confiáveis, especialmente em situações onde as condições do problema exigem ajustes ou estimativas adicionais. Nos próximos passos, utilizaremos essa distribuição para pivotar a QP e derivar o intervalo de confiança.
