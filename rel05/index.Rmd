@@ -1,5 +1,5 @@
 ---
-title: "Relatório 06-Teorema do Limite Central-TLC"
+title: "Relatório 05-Teorema do Limite Central-TLC"
 author: "Maxwell Ramalho"
 date: "18/10/2024"
 header-includes:

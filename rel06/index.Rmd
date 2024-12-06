@@ -1,5 +1,5 @@
 ---
-title: "Relatório 06-Estimadores Pontuais"
+title: "Relatório 06 - Estimadores Pontuais"
 author: "Maxwell Ramalho"
 date: "08/11/2024"
 header-includes:
